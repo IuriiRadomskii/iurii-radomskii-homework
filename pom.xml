@@ -14,6 +14,8 @@
         <testng.version>7.4.0</testng.version>
         <assertj.version>3.20.2</assertj.version>
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <calculator.path>com.epam.tc.hw1.calculator</calculator.path>
     </properties>
 
     <profiles>
@@ -26,6 +28,9 @@
 
         <profile>
             <id>add-subtract-calculator-test-suite-profile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
             </properties>
@@ -41,11 +46,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.epam.calculator</groupId>
+            <groupId>com.epam.tc.hw1.calculator</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
         </dependency>
 
         <dependency>
