@@ -3,7 +3,7 @@ package com.epam.tc.hw1.tests;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-public class CalculatorMultiplyTest extends CalculatorBaseTest{
+public class CalculatorMultiplyTest extends CalculatorBaseTest {
 
     @Test(dataProvider = "MultiplyTestData")
     public void multiplyTest(double a, double b, double expected) {

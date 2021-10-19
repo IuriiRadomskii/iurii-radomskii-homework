@@ -9,10 +9,9 @@ public class CalculatorBaseTest {
     protected Calculator calculator;
 
     @BeforeClass
-    public void createCalculator(){
+    public void createCalculator() {
         this.calculator = new Calculator();
     }
-
 
     @DataProvider(name = "AddTestData")
     public Object[][] getAddTestData() {
