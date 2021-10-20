@@ -8,8 +8,20 @@ public class CalculatorDivideTest extends CalculatorBaseTest {
     @Test(dataProvider = "DivideTestData")
     public void divideTest(double a, double b, double expected) {
         System.out.printf("%s / %s\n", a, b);
+        if (b == 0) {
+            Assertions.assertThatThrownBy(() -> {
+                throw new Exception(); })
+                      .isInstanceOf(Exception.class);
+        }
         double actual = calculator.div(a, b);
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 
+    @Test(dataProvider = "DivideByZeroTestData")
+    public void divideByZeroTest(int a, int b) {
+        Assertions.assertThatThrownBy(() -> {
+            calculator.div(a, b); })
+                  .isInstanceOf(NumberFormatException.class)
+                  .hasMessageContaining("Attempt to divide by zero");
+    }
 }

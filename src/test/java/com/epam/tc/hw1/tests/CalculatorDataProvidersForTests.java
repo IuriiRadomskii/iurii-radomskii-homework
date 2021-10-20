@@ -45,4 +45,13 @@ public class CalculatorDataProvidersForTests {
             {1, 2, 0.5}
         };
     }
+
+    @DataProvider(name = "DivideByZeroTestData")
+    public Object[][] getDivideByZeroTestData() {
+        return new Object[][]{
+            {0, 0},
+            {100, 0},
+            {-100, 0}
+        };
+    }
 }
