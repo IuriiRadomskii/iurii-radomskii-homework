@@ -86,8 +86,8 @@ public class ExerciseOneTest extends BaseTest {
         List<WebElement> iconsOnIndexPage = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElements(By
                 .className("benefit-icon")));
-        boolean imagesIsDisplayed = iconsOnIndexPage.stream().allMatch(WebElement::isDisplayed);
-        softly.assertThat(imagesIsDisplayed).isTrue();
+        boolean imagesAreDisplayed = iconsOnIndexPage.stream().allMatch(WebElement::isDisplayed);
+        softly.assertThat(imagesAreDisplayed).isTrue();
 
         //7. Assert that texts under icons have proper text
         List<WebElement> textUnderIconsElements = new WebDriverWait(driver, Duration.ofSeconds(2))
