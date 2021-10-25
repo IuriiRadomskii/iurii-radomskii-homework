@@ -1,4 +1,4 @@
-package com.epam.tc.hw2.ex1;
+package com.epam.tc.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
@@ -18,31 +18,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-public class ExerciseOneTest {
+public class ExerciseOneTest extends BaseTest {
 
-    private WebDriver driver;
+    private WebDriver driver = null;
     private SoftAssertions softly = null;
-    private final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    private final String userName = "Roman";
-    private final String pass = "Jdi1234";
-    private final String expectedUserNameAtPage = "ROMAN IOVLEV";
-    private final Set<String> expectedHeadersBtnsName = Set
-            .of("HOME",
-                "CONTACT FORM",
-                "SERVICE",
-                "METALS & COLORS");
-    private final Set<String> expectedTextUnderIcons = Set
-        .of("To be flexible and\ncustomizable",
-            "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…",
-            "To be multiplatform",
-            "To include good practices\nand ideas from successful\nEPAM project");
-    private final Set<String> expectedNavigationSidebarText = Set
-        .of("Home",
-        "Contact form",
-        "Service",
-        "Metals & Colors",
-        "Elements packs");
-
 
     public ExerciseOneTest() {
     }
@@ -151,16 +130,13 @@ public class ExerciseOneTest {
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
               .hasMessageContaining("invalid session id");
-        
+
         softly.assertAll();
     }
-
 
     @AfterClass
     public void clear() {
         driver.quit();
         driver = null;
-
-
     }
 }
