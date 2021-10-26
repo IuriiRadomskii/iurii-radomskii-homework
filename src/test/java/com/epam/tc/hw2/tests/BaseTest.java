@@ -1,4 +1,4 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.tests;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -25,8 +25,8 @@ public class BaseTest {
             "SERVICE",
             "METALS & COLORS");
     protected final Set<String> expectedTextUnderIcons = Set
-        .of("To be flexible and\ncustomizable",
-            "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…",
+        .of("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…",
+            "To be flexible and\ncustomizable",
             "To be multiplatform",
             "To include good practices\nand ideas from successful\nEPAM project");
     protected final Set<String> expectedNavigationSidebarText = Set

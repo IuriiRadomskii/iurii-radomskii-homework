@@ -1,10 +1,7 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.sql.Time;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;

@@ -1,9 +1,10 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
@@ -96,8 +97,9 @@ public class ExerciseOneTest extends BaseTest {
         Set<String> actualTextUnderIcons = textUnderIconsElements
             .stream()
             .map(WebElement::getText)
-            .collect(Collectors.toSet());
-        softly.assertThat(expectedTextUnderIcons).isEqualTo(actualTextUnderIcons);
+            .collect(Collectors.toCollection(TreeSet::new));
+        softly.assertThat(actualTextUnderIcons).isEqualTo(expectedTextUnderIcons);
+
 
         //8. Assert that iframe with "Frame Button" exists
         WebElement iframeWithButton = new WebDriverWait(driver, Duration.ofSeconds(2))
