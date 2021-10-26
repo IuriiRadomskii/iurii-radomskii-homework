@@ -1,11 +1,10 @@
-package com.epam.tc.hw2.tests;
+package com.epam.tc.hw2;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
-import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
-
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final String userName = "Roman";
@@ -35,12 +33,6 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
-
-    protected String getCurrentTime(long deltaSecond) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalDateTime currentTime = LocalDateTime.now().plusSeconds(deltaSecond);
-        return formatter.format(currentTime);
-    }
 
     private void assertCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
                                     SoftAssertions softly, boolean isSelected) {
@@ -87,7 +79,6 @@ public class BaseTest {
             String actualLogText = log.getText();
             String expectedLogText = "Colors: value changed to " + optionName;
             softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
-
         }
     }
 

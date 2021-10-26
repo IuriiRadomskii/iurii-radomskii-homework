@@ -1,5 +1,6 @@
-package com.epam.tc.hw2.tests;
+package com.epam.tc.hw2.ex2;
 
+import com.epam.tc.hw2.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import java.util.List;
