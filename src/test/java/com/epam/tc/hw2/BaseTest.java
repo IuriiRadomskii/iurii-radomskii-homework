@@ -1,10 +1,17 @@
 package com.epam.tc.hw2;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +40,63 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
+
+    protected String getUserName() {
+        try {
+            File file = new File("src/test/java/com/epam/tc/hw2/credentials");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = reader.readLine();
+            Pattern pattern1 = Pattern.compile("username", Pattern.CASE_INSENSITIVE);
+            while (line != null) {
+                Matcher matcher1 = pattern1.matcher(line);
+                if (matcher1.find()) {
+                    Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
+                    Matcher matcher2 = pattern2.matcher(line);
+                    if (matcher2.find()) {
+                        return matcher2.group();
+                    }
+                    line = reader.readLine();
+                } else {
+                    line = reader.readLine();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    protected String getPassword() {
+        try {
+            File file = new File("src/test/java/com/epam/tc/hw2/credentials");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = reader.readLine();
+            Pattern pattern1 = Pattern.compile("password", Pattern.CASE_INSENSITIVE);
+            while (line != null) {
+                Matcher matcher1 = pattern1.matcher(line);
+                if (matcher1.find()) {
+                    Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
+                    Matcher matcher2 = pattern2.matcher(line);
+                    if (matcher2.find()) {
+                        return matcher2.group();
+                    }
+                    line = reader.readLine();
+                } else {
+                    line = reader.readLine();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     private void assertCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
                                     SoftAssertions softly, boolean isSelected) {

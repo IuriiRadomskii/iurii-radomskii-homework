@@ -54,8 +54,8 @@ public class ExerciseOneTest extends BaseTest {
         toggleBtn.click();
         WebElement inputUserName = driver.findElement(By.id("name"));
         WebElement inputUserPass = driver.findElement(By.id("password"));
-        inputUserName.sendKeys(userName);
-        inputUserPass.sendKeys(pass);
+        inputUserName.sendKeys(getUserName());
+        inputUserPass.sendKeys(getPassword());
         WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.id("login-button")));
         loginBtn.click();
