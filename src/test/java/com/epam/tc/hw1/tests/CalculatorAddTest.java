@@ -8,6 +8,6 @@ public class CalculatorAddTest extends CalculatorBaseTest {
     public void sumTest(double a, double b, double expected) {
         System.out.printf("%s + %s\n", a, b);
         double actual = calculator.sum(a, b);
-        Assertions.assertThat(actual).isEqualTo(expected);
+        Assertions.assertThat(actual).as("Add test failed").isEqualTo(expected);
     }
 }
