@@ -9,7 +9,9 @@ public class CalculatorDivideTest extends CalculatorBaseTest {
     public void divideTest(long a, long b, double expected) {
         System.out.printf("%s / %s\n", a, b);
         double actual = calculator.div(a, b);
-        Assertions.assertThat(actual).isEqualTo(expected);
+        Assertions.assertThat(actual).as(String.format("Divide test with params %s, %s failed."
+            + " Expected result is: %s. Observed result is: %s", a, b, expected, actual))
+                  .isEqualTo(expected, Assertions.offset(0.1d));
 
     }
 
