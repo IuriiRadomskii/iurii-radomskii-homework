@@ -11,7 +11,8 @@ public class CalculatorDataProvidersForTests {
             {1, -1, 0},
             {-100, -100, -200},
             {0, 0, 0},
-            {0.5, 0.5, 1}
+            {0.5, 0.5, 1},
+            {1, 1, 3}
         };
     }
 
@@ -41,7 +42,7 @@ public class CalculatorDataProvidersForTests {
         return new Object[][]{
             {100, 10, 10},
             {100, -100, -1},
-            {100, 0, 0},
+            {100, 1, 100},
             {5, -5, -1},
             {1, 2, 0.5}
         };
