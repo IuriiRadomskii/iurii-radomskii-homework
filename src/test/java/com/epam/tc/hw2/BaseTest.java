@@ -21,8 +21,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseTest {
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    protected final String userName = "Roman";
-    protected final String pass = "Jdi1234";
     protected final String expectedUserNameAtPage = "ROMAN IOVLEV";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
@@ -54,7 +52,7 @@ public class BaseTest {
                     Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
                     Matcher matcher2 = pattern2.matcher(line);
                     if (matcher2.find()) {
-                        return matcher2.group();
+                        return matcher2.group(1);
                     }
                     line = reader.readLine();
                 } else {
@@ -82,7 +80,7 @@ public class BaseTest {
                     Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
                     Matcher matcher2 = pattern2.matcher(line);
                     if (matcher2.find()) {
-                        return matcher2.group();
+                        return matcher2.group(1);
                     }
                     line = reader.readLine();
                 } else {

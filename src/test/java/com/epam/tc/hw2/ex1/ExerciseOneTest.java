@@ -69,7 +69,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(actualContactsPageTitle).isNotEqualTo(actualIndexPageTitle);
 
         //4. Assert that user name is displayed and equals to expected result
-        WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(2))
+        WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(4))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         String actualUserNameAtPage = userNameLogged.getText();
         softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
