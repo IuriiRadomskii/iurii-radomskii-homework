@@ -2,13 +2,13 @@ package com.epam.tc.hw2;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,57 +40,27 @@ public class BaseTest {
             "Elements packs");
 
     protected String getUserName() {
+        FileInputStream inputStream;
+        Properties property = new Properties();
         try {
-            File file = new File("src/test/java/com/epam/tc/hw2/credentials");
-            FileReader fileReader = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fileReader);
-            String line = reader.readLine();
-            Pattern pattern1 = Pattern.compile("username", Pattern.CASE_INSENSITIVE);
-            while (line != null) {
-                Matcher matcher1 = pattern1.matcher(line);
-                if (matcher1.find()) {
-                    Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
-                    Matcher matcher2 = pattern2.matcher(line);
-                    if (matcher2.find()) {
-                        return matcher2.group(1);
-                    }
-                    line = reader.readLine();
-                } else {
-                    line = reader.readLine();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            property.load(inputStream);
+            return property.getProperty("username");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Property file doesn't exist");
         }
         return null;
     }
 
     protected String getPassword() {
+        FileInputStream inputStream;
+        Properties property = new Properties();
         try {
-            File file = new File("src/test/java/com/epam/tc/hw2/credentials");
-            FileReader fileReader = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fileReader);
-            String line = reader.readLine();
-            Pattern pattern1 = Pattern.compile("password", Pattern.CASE_INSENSITIVE);
-            while (line != null) {
-                Matcher matcher1 = pattern1.matcher(line);
-                if (matcher1.find()) {
-                    Pattern pattern2 = Pattern.compile("\"([^\"]*)\"");
-                    Matcher matcher2 = pattern2.matcher(line);
-                    if (matcher2.find()) {
-                        return matcher2.group(1);
-                    }
-                    line = reader.readLine();
-                } else {
-                    line = reader.readLine();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            property.load(inputStream);
+            return property.getProperty("password");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Property file doesn't exist");
         }
         return null;
     }
