@@ -1,3 +1,4 @@
+
 package com.epam.tc.hw2.ex2;
 
 import com.epam.tc.hw2.BaseTest;
@@ -66,7 +67,7 @@ public class ExerciseTwoTest extends BaseTest {
         WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         String actualUserNameAtPage = userNameLogged.getText();
-        softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
+        softly.assertThat(actualUserNameAtPage).isEqualTo(getExpectedUserNameAtPage());
 
         //5. Assert that Support page is opened
         WebElement leftSidebarServiceBtn = new WebDriverWait(driver, Duration.ofSeconds(2))

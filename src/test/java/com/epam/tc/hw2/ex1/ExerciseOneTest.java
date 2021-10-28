@@ -1,3 +1,4 @@
+
 package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.BaseTest;
@@ -72,7 +73,7 @@ public class ExerciseOneTest extends BaseTest {
         WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(4))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         String actualUserNameAtPage = userNameLogged.getText();
-        softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
+        softly.assertThat(actualUserNameAtPage).isEqualTo(getExpectedUserNameAtPage());
 
         //5. Assert that menu buttons on header are displayed and have proper names
         List<WebElement> headersBtns = new WebDriverWait(driver, Duration.ofSeconds(3))

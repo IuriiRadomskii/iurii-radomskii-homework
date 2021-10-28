@@ -21,7 +21,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseTest {
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    protected final String expectedUserNameAtPage = "ROMAN IOVLEV";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
             "CONTACT FORM",
@@ -38,6 +37,20 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
+
+
+    protected String getExpectedUserNameAtPage() {
+        FileInputStream inputStream;
+        Properties property = new Properties();
+        try {
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            property.load(inputStream);
+            return property.getProperty("expectedUserNameAtPage");
+        } catch (IOException e) {
+            System.err.println("Property file doesn't exist");
+        }
+        return null;
+    }
 
     protected String getUserName() {
         FileInputStream inputStream;
