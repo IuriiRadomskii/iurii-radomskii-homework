@@ -11,21 +11,42 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <testng.version>7.4.0</testng.version>
+        <assertj.version>3.20.2</assertj.version>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <profiles>
 
     </profiles>
 
+<dependencies>
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>${testng.version}</version>
+        <scope>test</scope>
+    </dependency>
 
-    <dependencies>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${assertj.version}</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 
-    </dependencies>
-
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
+<build>
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire.version}</version>
+        <configuration>
+            <suiteXmlFiles>${suite.name.xml}</suiteXmlFiles>
+        </configuration>
+    </plugin>
+</plugins>
+</build>
 </project>
