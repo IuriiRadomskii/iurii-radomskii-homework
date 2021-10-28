@@ -41,8 +41,8 @@ public class ExerciseOneTest extends BaseTest {
     @Test
     public void exerciseOneTest() {
         //1. Assert that page is opened and downloaded
-        String indexWindowHandle = driver.getWindowHandle();
-        softly.assertThat(indexWindowHandle).isNotNull();
+        String indexWindowURL = driver.getCurrentUrl();
+        softly.assertThat(indexWindowURL).isEqualTo(url);
 
         //2. Assert that page title is 'Home Page'
         String expectedIndexPageTitle = "Home Page";
@@ -109,6 +109,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(iframeWithButton.isEnabled()).isTrue();
 
         //9. Assert that "Frame Button" in frame exists
+        String indexWindowHandle = driver.getWindowHandle();
         driver.switchTo().frame(iframeWithButton);
         WebElement frameButton = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.id("frame-button")));

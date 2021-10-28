@@ -35,8 +35,8 @@ public class ExerciseTwoTest extends BaseTest {
     @Test
     public void exerciseTwoTest() throws InterruptedException {
         //1. Assert that page is opened and downloaded
-        String indexWindowHandle = driver.getWindowHandle();
-        softly.assertThat(indexWindowHandle).isNotNull();
+        String indexWindowURL = driver.getCurrentUrl();
+        softly.assertThat(indexWindowURL).isEqualTo(url);
 
         //2. Assert that page title is 'Home Page'
         String expectedIndexPageTitle = "Home Page";
