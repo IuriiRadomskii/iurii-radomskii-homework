@@ -11,21 +11,74 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <testng.version>7.4.0</testng.version>
+        <assertj.version>3.20.2</assertj.version>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <calculator.path>com.epam.tc.hw1.calculator</calculator.path>
     </properties>
 
     <profiles>
+        <profile>
+            <id>all-calculator-test-suite-profile</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AllCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
 
+        <profile>
+            <id>add-subtract-calculator-test-suite-profile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>multiply-divide-calculator-test-suite-profile</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/MultiplyDivideCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
 
-
     <dependencies>
+        <dependency>
+            <groupId>com.epam.tc.hw1.calculator</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
+        </dependency>
 
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire.version}</version>
+                <configuration>
+                    <suiteXmlFiles>${suite.name.xml}</suiteXmlFiles>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 </project>
