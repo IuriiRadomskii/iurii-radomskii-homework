@@ -70,16 +70,16 @@ public class ExerciseTwoTest extends BaseTest {
         String actualUserNameAtPage = userNameLogged.getText();
         softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
 
-        //5. Assert that Support page is opened
+        //5. Assert that Different Elements page is opened
         WebElement leftSidebarServiceBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("#mCSB_1_container > ul > li:nth-child(3) > a")));
+                    .xpath("//ul[@class='sidebar-menu left']/li[@index=3]")));
         leftSidebarServiceBtn.click();
         WebElement leftSidebarDifElemsBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(8) > a")));
+                    .xpath("//ul[@class='sub']/li[@index=8]")));
         leftSidebarDifElemsBtn.click();
         String expectedDifElemsPageTitle = "Different Elements";
         softly.assertThat(expectedDifElemsPageTitle).isEqualTo(driver.getTitle());
@@ -88,13 +88,11 @@ public class ExerciseTwoTest extends BaseTest {
         WebElement waterCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(2) > label:nth-child(1) > input[type=checkbox]")));
+                    .xpath("//label[@class='label-checkbox'][1]/input")));
         WebElement windCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(2) > label:nth-child(3) > input[type=checkbox]")));
+                    .xpath("//label[@class='label-checkbox'][3]/input")));
         waterCheckBox.click();
         windCheckBox.click();
         softly.assertThat(waterCheckBox.isSelected()).isTrue();
@@ -104,8 +102,7 @@ public class ExerciseTwoTest extends BaseTest {
         WebElement selenRadioBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(3) > label:nth-child(4) > input[type=radio]")));
+                    .xpath("//label[@class='label-radio'][4]/input")));
         selenRadioBox.click();
         softly.assertThat(selenRadioBox.isSelected()).isTrue();
 
@@ -113,8 +110,7 @@ public class ExerciseTwoTest extends BaseTest {
         WebElement yellowOption = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div.colors > select > option:nth-child(4)")));
+                    .xpath("//option[text()='Yellow']")));
         yellowOption.click();
         softly.assertThat(yellowOption.isSelected()).isTrue();
 
