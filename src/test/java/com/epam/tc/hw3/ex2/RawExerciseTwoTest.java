@@ -18,7 +18,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 @SuppressWarnings("checkstyle:Indentation")
-public class ExerciseTwoTest extends BaseTest {
+public class RawExerciseTwoTest extends BaseTest {
 
     private WebDriver driver = null;
     private SoftAssertions softly = null;

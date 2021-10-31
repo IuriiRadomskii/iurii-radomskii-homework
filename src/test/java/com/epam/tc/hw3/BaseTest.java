@@ -1,6 +1,7 @@
 
 package com.epam.tc.hw3;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -11,9 +12,21 @@ import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
+
+    protected WebDriver driver;
+    protected SoftAssertions softly;
+
+    @BeforeClass
+    public void setupChromeDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        softly = new SoftAssertions();
+    }
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
