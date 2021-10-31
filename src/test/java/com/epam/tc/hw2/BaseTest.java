@@ -20,6 +20,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
 
+    static {
+        expectedUserNameAtPage = getExpectedUserNameAtPage();
+        userName = getUserName();
+        password = getPassword();
+    }
+
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
@@ -37,9 +43,12 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
+    protected static String expectedUserNameAtPage;
+    protected static String userName;
+    protected static String password;
 
 
-    protected String getExpectedUserNameAtPage() {
+    protected static String getExpectedUserNameAtPage() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
@@ -52,7 +61,7 @@ public class BaseTest {
         return null;
     }
 
-    protected String getUserName() {
+    protected static String getUserName() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
@@ -65,7 +74,7 @@ public class BaseTest {
         return null;
     }
 
-    protected String getPassword() {
+    protected static String getPassword() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {

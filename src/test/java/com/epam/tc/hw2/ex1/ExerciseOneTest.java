@@ -55,8 +55,8 @@ public class ExerciseOneTest extends BaseTest {
         toggleBtn.click();
         WebElement inputUserName = driver.findElement(By.id("name"));
         WebElement inputUserPass = driver.findElement(By.id("password"));
-        inputUserName.sendKeys(getUserName());
-        inputUserPass.sendKeys(getPassword());
+        inputUserName.sendKeys(userName);
+        inputUserPass.sendKeys(password);
         WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.id("login-button")));
         loginBtn.click();
@@ -73,7 +73,7 @@ public class ExerciseOneTest extends BaseTest {
         WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(4))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         String actualUserNameAtPage = userNameLogged.getText();
-        softly.assertThat(actualUserNameAtPage).isEqualTo(getExpectedUserNameAtPage());
+        softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
 
         //5. Assert that menu buttons on header are displayed and have proper names
         List<WebElement> headersBtns = new WebDriverWait(driver, Duration.ofSeconds(3))
