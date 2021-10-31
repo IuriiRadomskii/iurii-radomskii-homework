@@ -1,5 +1,5 @@
 
-package com.epam.tc.hw3;
+package com.epam.tc.hw3.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
@@ -133,5 +134,10 @@ public class BaseTest {
             String expectedLogText = "Colors: value changed to " + optionName;
             softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
         }
+    }
+
+    @AfterClass
+    public void clear() {
+        driver.quit();
     }
 }
