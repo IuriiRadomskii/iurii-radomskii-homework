@@ -14,26 +14,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-@SuppressWarnings("checkstyle:Indentation")
+
 public class ExerciseTwoTest extends BaseTest {
 
-    private WebDriver driver = null;
-    private SoftAssertions softly = null;
-
-    @BeforeClass
-    public void setupChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        softly = new SoftAssertions();
+    @BeforeMethod
+    private void setUpPage() {
         driver.navigate().to(url);
         driver.manage().window().maximize();
     }
 
+    @AfterMethod
+    private void assertAll() {
+        softly.assertAll();
+    }
+
     @Test
-    public void exerciseTwoTest() throws InterruptedException {
+    public void exerciseTwoTest() {
         //1. Assert that page is opened and downloaded
         String indexWindowURL = driver.getCurrentUrl();
         softly.assertThat(indexWindowURL).isEqualTo(url);
@@ -145,9 +146,52 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertAll();
     }
 
-    @AfterClass
-    public void clear() {
-        driver.quit();
-        driver = null;
+    private void assertCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
+                                  SoftAssertions softly, boolean isSelected) {
+        for (WebElement checkBox : checkBoxes) {
+            checkBox.click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String checkBoxName = checkBox.getText();
+            String actualLogText = log.getText();
+            String expectedLogText = checkBoxName + ": condition changed to " + isSelected;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+
+        }
     }
+
+    private void checkCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
+                                   SoftAssertions softly) {
+        assertCheckBoxes(checkBoxes, driver, softly, true);
+        assertCheckBoxes(checkBoxes, driver, softly, false);
+    }
+
+    private void checkRadioBoxes(List<WebElement> radioBoxes, WebDriver driver, SoftAssertions softly) {
+        for (WebElement radioBox : radioBoxes) {
+            radioBox.click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String radioBoxName = radioBox.getText();
+            String actualLogText = log.getText();
+            String expectedLogText = "metal: value changed to " + radioBoxName;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+
+        }
+    }
+
+    private void checkColorOptions(List<WebElement> colorOptions, WebDriver driver, SoftAssertions softly) {
+        for (int i = 3; i >= 0; i--) {
+            colorOptions.get(i).click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String optionName = colorOptions.get(i).getText();
+            String actualLogText = log.getText();
+            String expectedLogText = "Colors: value changed to " + optionName;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+        }
+    }
+
 }
