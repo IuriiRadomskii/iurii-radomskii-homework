@@ -20,8 +20,9 @@ public class ExerciseOneTest extends BaseTest {
     @BeforeMethod
     public void navigateToIndexPage() {
         indexPage = new IndexPage(driver);
-        userName = getUserName();
-        password = getPassword();
+        setUserName();
+        setPassword();
+        setExpectedUserNameAtPage();
 
     }
 
@@ -46,7 +47,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(loginPage.getUserNameText().isDisplayed()).isTrue();
 
         //4. Assert that user name is displayed and equals to expected result
-        softly.assertThat(loginPage.getUserNameText().getText()).isEqualTo(getExpectedUserNameAtPage());
+        softly.assertThat(loginPage.getUserNameText().getText()).isEqualTo(expectedUserNameAtPage);
 
         //5. Assert that menu buttons on loginPage are displayed and have proper names
         softly.assertThat(expectedHeadersBtnsName).isEqualTo(indexPage.getHeadersBtnsText());
