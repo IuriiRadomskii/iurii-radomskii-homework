@@ -1,5 +1,6 @@
 package com.epam.tc.hw3.tests.ex2;
 
+import com.epam.tc.hw3.pages.DifferentElementsPage;
 import com.epam.tc.hw3.pages.IndexPage;
 import com.epam.tc.hw3.tests.BaseTest;
 import java.time.Duration;
@@ -16,9 +17,6 @@ public class ExerciseTwoTest extends BaseTest {
     @BeforeMethod
     public void navigateToIndexPage() {
         indexPage = new IndexPage(driver);
-        setUserName();
-        setPassword();
-        setExpectedUserNameAtPage();
     }
 
     @AfterMethod
@@ -31,7 +29,7 @@ public class ExerciseTwoTest extends BaseTest {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage();
-        softly.assertThat(indexPage.getURL()).isEqualTo(url);
+        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(url);
 
         //2. Assert that page title is 'Home Page'
         softly.assertThat(indexPage.getActualPageTitle()).isEqualTo(indexPage.title);
@@ -44,11 +42,29 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThat(indexPage.getUserNameText().getText()).isEqualTo(expectedUserNameAtPage);
 
         //5. Assert that Different Elements page is opened
-        List<WebElement> leftSidebarServiceBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElements(By
-                    .xpath("//ul[@class='sidebar-menu left']/li")));
-        leftSidebarServiceBtn.stream().map(WebElement::getText).forEach(System.out::println);
+        DifferentElementsPage diffPage = indexPage.goToDiffElemsPage();
+        softly.assertThat("Different Elements").isEqualTo(diffPage.getTitle());
+
+        //6. Assert that Water and Wind checkboxes are selected
+        diffPage
+            .clickElement(diffPage.getWaterCheckBox())
+            .clickElement(diffPage.getWindCheckBox());
+        softly.assertThat(diffPage.getWaterCheckBox().isSelected()).isTrue();
+        softly.assertThat(diffPage.getWindCheckBox().isSelected()).isTrue();
+
+        //7. Assert that 'Selen' radio is checked
+        diffPage
+            .clickElement(diffPage.getSelenRadio());
+        softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
+
+        //8. Assert that yellow option in dropdown menu is selected
+        diffPage
+            .clickElement(diffPage.getYellowOption());
+        softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
+
+        //9. Assert that there is a separate log entry for each checkbox, radio button, and color option
+        // corresponding to their status.
+        diffPage.refresh();
 
 
     }

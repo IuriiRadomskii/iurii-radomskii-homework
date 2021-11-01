@@ -1,6 +1,5 @@
 package com.epam.tc.hw3.tests.ex1;
 
-
 import com.epam.tc.hw3.pages.Frame;
 import com.epam.tc.hw3.pages.IndexPage;
 import com.epam.tc.hw3.tests.BaseTest;
@@ -14,9 +13,6 @@ public class ExerciseOneTest extends BaseTest {
     @BeforeMethod
     public void navigateToIndexPage() {
         indexPage = new IndexPage(driver);
-        setUserName();
-        setPassword();
-        setExpectedUserNameAtPage();
     }
 
     @AfterMethod
@@ -29,7 +25,7 @@ public class ExerciseOneTest extends BaseTest {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage();
-        softly.assertThat(indexPage.getURL()).isEqualTo(url);
+        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(url);
 
         //2. Assert that page title is 'Home Page'
         softly.assertThat(indexPage.getActualPageTitle()).isEqualTo(indexPage.title);
