@@ -22,20 +22,11 @@ import org.testng.annotations.Test;
 
 public class ExerciseTwoTest extends BaseTest {
 
-    @BeforeMethod
-    private void setUpPage() {
-        driver.navigate().to(url);
-        driver.manage().window().maximize();
-    }
-
-    @AfterMethod
-    private void assertAll() {
-        softly.assertAll();
-    }
-
     @Test
     public void exerciseTwoTest() {
         //1. Assert that page is opened and downloaded
+        driver.navigate().to(url);
+        driver.manage().window().maximize();
         String indexWindowURL = driver.getCurrentUrl();
         softly.assertThat(indexWindowURL).isEqualTo(url);
 
@@ -138,7 +129,6 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
               .hasMessageContaining("invalid session id");
-
         softly.assertAll();
     }
 

@@ -14,7 +14,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
@@ -29,6 +31,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setupChromeDriver() {
+        System.out.println("Before class");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         softly = new SoftAssertions();
@@ -36,6 +39,7 @@ public class BaseTest {
 
     @AfterClass
     public void clear() {
+        System.out.println("After class");
         driver.quit();
     }
 
@@ -56,10 +60,10 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
+
     protected static String expectedUserNameAtPage;
     protected static String userName;
     protected static String password;
-
 
     protected static void setExpectedUserNameAtPage() {
         FileInputStream inputStream;
