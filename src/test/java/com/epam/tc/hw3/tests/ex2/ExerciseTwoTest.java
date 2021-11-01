@@ -25,7 +25,7 @@ public class ExerciseTwoTest extends BaseTest {
     }
 
     @Test
-    public void exerciseTwoTest() {
+    public void exerciseTwoTest() throws InterruptedException {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage();
@@ -65,7 +65,11 @@ public class ExerciseTwoTest extends BaseTest {
         //9. Assert that there is a separate log entry for each checkbox, radio button, and color option
         // corresponding to their status.
         diffPage.refresh();
-
+        diffPage
+            .clickInARow(diffPage.getCheckBoxRow())
+            .clickInARow(diffPage.getRadioBoxRow())
+            .clickInARow(diffPage.getColorOptions());
+        softly.assertThat(diffPage.getActualLogs()).isEqualTo(expectedLogs);
 
     }
 }
