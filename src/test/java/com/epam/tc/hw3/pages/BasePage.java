@@ -1,13 +1,21 @@
 package com.epam.tc.hw3.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class BasePage extends AbstractPage {
 
+    @FindBy(xpath = "//a[@href='index.html']")
+    private WebElement homeBtn;
+
     BasePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
+    }
+
+    public IndexPage goToIndexPage() {
+        homeBtn.click();
+        return new IndexPage(driver);
     }
 
     public String getTitle() {
@@ -18,7 +26,9 @@ public class BasePage extends AbstractPage {
         return driver.getCurrentUrl();
     }
 
-    public String getWinHandle() {
+    public String getWindowHandle() {
         return driver.getWindowHandle();
     }
+
+
 }

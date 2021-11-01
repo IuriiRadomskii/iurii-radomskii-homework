@@ -29,6 +29,11 @@ public class BaseTest {
         softly = new SoftAssertions();
     }
 
+    @AfterClass
+    public void clear() {
+        driver.quit();
+    }
+
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
@@ -136,8 +141,5 @@ public class BaseTest {
         }
     }
 
-    @AfterClass
-    public void clear() {
-        driver.quit();
-    }
+
 }
