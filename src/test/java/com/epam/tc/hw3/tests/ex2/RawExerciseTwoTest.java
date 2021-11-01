@@ -1,3 +1,4 @@
+/*
 package com.epam.tc.hw3.tests.ex2;
 
 
@@ -173,4 +174,4 @@ public class RawExerciseTwoTest extends BaseTest {
         }
     }
 
-}
+}*/

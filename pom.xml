@@ -11,12 +11,12 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <selenium.version>4.0.0</selenium.version>
         <testng.version>7.4.0</testng.version>
         <assertj.version>3.20.2</assertj.version>
-        <selenium.version>4.0.0</selenium.version>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
         <slf4j.version>2.0.0-alpha5</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
     </properties>
 
@@ -54,6 +54,12 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>homework03-test-suite</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw3/test_suits/AllHomework03TestSuite</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
