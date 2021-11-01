@@ -20,7 +20,12 @@
     </properties>
 
     <profiles>
-
+        <profile>
+            <id>homework03-test-suite</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw3/test_suits/AllHomework03TestSuite</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
