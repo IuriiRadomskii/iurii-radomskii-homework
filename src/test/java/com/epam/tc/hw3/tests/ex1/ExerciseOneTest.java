@@ -3,7 +3,6 @@ package com.epam.tc.hw3.tests.ex1;
 
 import com.epam.tc.hw3.pages.Frame;
 import com.epam.tc.hw3.pages.IndexPage;
-import com.epam.tc.hw3.pages.LoginPage;
 import com.epam.tc.hw3.tests.BaseTest;
 import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.AfterMethod;
@@ -12,18 +11,12 @@ import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends BaseTest {
 
-    private IndexPage indexPage;
-    private String userName;
-    private String password;
-
-
     @BeforeMethod
     public void navigateToIndexPage() {
         indexPage = new IndexPage(driver);
         setUserName();
         setPassword();
         setExpectedUserNameAtPage();
-
     }
 
     @AfterMethod
@@ -42,12 +35,11 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(indexPage.getActualPageTitle()).isEqualTo(indexPage.title);
 
         //3. Assert that user is logged by given username and password
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(userName, password);
-        softly.assertThat(loginPage.getUserNameText().isDisplayed()).isTrue();
+        indexPage.login(userName, password);
+        softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
 
         //4. Assert that user name is displayed and equals to expected result
-        softly.assertThat(loginPage.getUserNameText().getText()).isEqualTo(expectedUserNameAtPage);
+        softly.assertThat(indexPage.getUserNameText().getText()).isEqualTo(expectedUserNameAtPage);
 
         //5. Assert that menu buttons on loginPage are displayed and have proper names
         softly.assertThat(expectedHeadersBtnsName).isEqualTo(indexPage.getHeadersBtnsText());

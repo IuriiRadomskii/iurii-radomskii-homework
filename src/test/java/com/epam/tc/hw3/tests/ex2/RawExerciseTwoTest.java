@@ -1,8 +1,7 @@
-
 package com.epam.tc.hw3.tests.ex2;
 
+
 import com.epam.tc.hw3.tests.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
@@ -10,30 +9,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-@SuppressWarnings("checkstyle:Indentation")
+
 public class RawExerciseTwoTest extends BaseTest {
 
-    private WebDriver driver = null;
-    private SoftAssertions softly = null;
-
-    @BeforeClass
-    public void setupChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        softly = new SoftAssertions();
-        driver.navigate().to(url);
-        driver.manage().window().maximize();
-    }
-
     @Test
-    public void exerciseTwoTest() throws InterruptedException {
+    public void exerciseTwoTest() {
         //1. Assert that page is opened and downloaded
         String indexWindowURL = driver.getCurrentUrl();
         softly.assertThat(indexWindowURL).isEqualTo(url);
@@ -49,8 +33,8 @@ public class RawExerciseTwoTest extends BaseTest {
         toggleBtn.click();
         WebElement inputUserName = driver.findElement(By.id("name"));
         WebElement inputUserPass = driver.findElement(By.id("password"));
-        inputUserName.sendKeys(getUserName());
-        inputUserPass.sendKeys(getPassword());
+        inputUserName.sendKeys(userName);
+        inputUserPass.sendKeys(password);
         WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.id("login-button")));
         loginBtn.click();
@@ -67,18 +51,18 @@ public class RawExerciseTwoTest extends BaseTest {
         WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         String actualUserNameAtPage = userNameLogged.getText();
-        softly.assertThat(actualUserNameAtPage).isEqualTo(getExpectedUserNameAtPage());
+        softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
 
-        //5. Assert that Support page is opened
+        //5. Assert that Different Elements page is opened
         WebElement leftSidebarServiceBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("#mCSB_1_container > ul > li:nth-child(3) > a")));
+                    .xpath("//ul[@class='sidebar-menu left']/li[@index=3]")));
         leftSidebarServiceBtn.click();
         WebElement leftSidebarDifElemsBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("#mCSB_1_container > ul > li:nth-child(3) > ul > li:nth-child(8) > a")));
+                    .xpath("//ul[@class='sub']/li[@index=8]")));
         leftSidebarDifElemsBtn.click();
         String expectedDifElemsPageTitle = "Different Elements";
         softly.assertThat(expectedDifElemsPageTitle).isEqualTo(driver.getTitle());
@@ -87,13 +71,11 @@ public class RawExerciseTwoTest extends BaseTest {
         WebElement waterCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(2) > label:nth-child(1) > input[type=checkbox]")));
+                    .xpath("//label[@class='label-checkbox'][1]/input")));
         WebElement windCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(2) > label:nth-child(3) > input[type=checkbox]")));
+                    .xpath("//label[@class='label-checkbox'][3]/input")));
         waterCheckBox.click();
         windCheckBox.click();
         softly.assertThat(waterCheckBox.isSelected()).isTrue();
@@ -103,8 +85,7 @@ public class RawExerciseTwoTest extends BaseTest {
         WebElement selenRadioBox = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div:nth-child(3) > label:nth-child(4) > input[type=radio]")));
+                    .xpath("//label[@class='label-radio'][4]/input")));
         selenRadioBox.click();
         softly.assertThat(selenRadioBox.isSelected()).isTrue();
 
@@ -112,8 +93,7 @@ public class RawExerciseTwoTest extends BaseTest {
         WebElement yellowOption = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver
                 .findElement(By
-                    .cssSelector("body > div > div.uui-main-container.page-inside > main > "
-                        + "div.main-content > div > div.colors > select > option:nth-child(4)")));
+                    .xpath("//option[text()='Yellow']")));
         yellowOption.click();
         softly.assertThat(yellowOption.isSelected()).isTrue();
 
@@ -145,9 +125,52 @@ public class RawExerciseTwoTest extends BaseTest {
         softly.assertAll();
     }
 
-    @AfterClass
-    public void clear() {
-        driver.quit();
-        driver = null;
+    private void assertCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
+                                  SoftAssertions softly, boolean isSelected) {
+        for (WebElement checkBox : checkBoxes) {
+            checkBox.click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String checkBoxName = checkBox.getText();
+            String actualLogText = log.getText();
+            String expectedLogText = checkBoxName + ": condition changed to " + isSelected;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+
+        }
     }
+
+    private void checkCheckBoxes(List<WebElement> checkBoxes, WebDriver driver,
+                                 SoftAssertions softly) {
+        assertCheckBoxes(checkBoxes, driver, softly, true);
+        assertCheckBoxes(checkBoxes, driver, softly, false);
+    }
+
+    private void checkRadioBoxes(List<WebElement> radioBoxes, WebDriver driver, SoftAssertions softly) {
+        for (WebElement radioBox : radioBoxes) {
+            radioBox.click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String radioBoxName = radioBox.getText();
+            String actualLogText = log.getText();
+            String expectedLogText = "metal: value changed to " + radioBoxName;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+
+        }
+    }
+
+    private void checkColorOptions(List<WebElement> colorOptions, WebDriver driver, SoftAssertions softly) {
+        for (int i = 3; i >= 0; i--) {
+            colorOptions.get(i).click();
+            WebElement log = new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(e -> driver.findElement(By
+                    .xpath("//ul[@class='panel-body-list logs']/li")));
+            String optionName = colorOptions.get(i).getText();
+            String actualLogText = log.getText();
+            String expectedLogText = "Colors: value changed to " + optionName;
+            softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
+        }
+    }
+
 }
