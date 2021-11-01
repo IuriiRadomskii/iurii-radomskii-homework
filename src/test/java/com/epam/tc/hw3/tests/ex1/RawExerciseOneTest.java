@@ -1,4 +1,5 @@
 
+/*
 package com.epam.tc.hw3.tests.ex1;
 
 import com.epam.tc.hw3.tests.BaseTest;
@@ -134,4 +135,4 @@ public class RawExerciseOneTest extends BaseTest {
     }
 
 
-}
+}*/

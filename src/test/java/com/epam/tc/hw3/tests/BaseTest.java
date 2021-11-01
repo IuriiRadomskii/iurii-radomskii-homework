@@ -1,6 +1,7 @@
 
 package com.epam.tc.hw3.tests;
 
+import com.epam.tc.hw3.pages.IndexPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,25 +16,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
     protected WebDriver driver;
     protected SoftAssertions softly;
-
-    @BeforeClass
-    public void setupChromeDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        softly = new SoftAssertions();
-    }
-
-    @AfterClass
-    public void clear() {
-        driver.quit();
-    }
-
+    protected IndexPage indexPage;
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
@@ -51,10 +42,21 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
-
     protected static String expectedUserNameAtPage;
     protected static String userName;
     protected static String password;
+
+    @BeforeClass
+    public void setupChromeDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        softly = new SoftAssertions();
+    }
+
+    @AfterClass
+    public void clear() {
+        driver.quit();
+    }
 
     protected static void setExpectedUserNameAtPage() {
         FileInputStream inputStream;

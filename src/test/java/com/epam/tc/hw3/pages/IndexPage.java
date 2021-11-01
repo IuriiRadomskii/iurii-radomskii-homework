@@ -14,6 +14,21 @@ public class IndexPage extends BasePage {
     public final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     public final String title = "Home Page";
 
+    @FindBy(xpath = "//a[@class='dropdown-toggle'][@href='#']")
+    private WebElement toggleButton;
+
+    @FindBy(id = "name")
+    private WebElement inputUserName;
+
+    @FindBy(id = "password")
+    private WebElement inputPassword;
+
+    @FindBy(id = "login-button")
+    private WebElement loginButton;
+
+    @FindBy(id = "user-name")
+    private WebElement userNameText;
+
     @FindBy(xpath = "//ul[@class='uui-navigation nav navbar-nav m-l8']/li/a")
     private List<WebElement> headersBtns;
 
@@ -80,6 +95,18 @@ public class IndexPage extends BasePage {
             .stream()
             .map(WebElement::getText)
             .collect(Collectors.toSet());
+    }
+
+    public WebElement getUserNameText() {
+        return userNameText;
+    }
+
+    public IndexPage login(String userName, String password) {
+        toggleButton.click();
+        inputUserName.sendKeys(userName);
+        inputPassword.sendKeys(password);
+        loginButton.click();
+        return this;
     }
 
 }
