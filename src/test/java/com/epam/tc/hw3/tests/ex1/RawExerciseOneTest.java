@@ -44,13 +44,16 @@ public class RawExerciseOneTest extends BaseTest {
         WebElement toggleBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.xpath("//a[@class='dropdown-toggle'][@href='#']")));
         toggleBtn.click();
+
         WebElement inputUserName = driver.findElement(By.id("name"));
         WebElement inputUserPass = driver.findElement(By.id("password"));
         inputUserName.sendKeys(getUserName());
         inputUserPass.sendKeys(getPassword());
+
         WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(driver -> driver.findElement(By.id("login-button")));
         loginBtn.click();
+
         WebElement contactFormBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
             .until(ExpectedConditions
                 .presenceOfElementLocated(By
