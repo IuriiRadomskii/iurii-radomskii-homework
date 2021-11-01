@@ -44,6 +44,12 @@ public class IndexPage extends BasePage {
     @FindBy(id = "frame")
     private WebElement iframe;
 
+    @FindBy(xpath = "//ul[@class='sidebar-menu left']//li[@index=3]")
+    private WebElement serviceBtn;
+
+    @FindBy(xpath = "//ul[@class='sub']/li[@index=8]")
+    private WebElement differentElementsBtn;
+
     public WebElement getIframe() {
         return iframe;
     }
@@ -55,10 +61,6 @@ public class IndexPage extends BasePage {
     public void openPage() {
         driver.navigate().to(url);
         driver.manage().window().maximize();
-    }
-
-    public String getURL() {
-        return driver.getCurrentUrl();
     }
 
     public String getActualPageTitle() {
@@ -101,12 +103,16 @@ public class IndexPage extends BasePage {
         return userNameText;
     }
 
-    public IndexPage login(String userName, String password) {
+    public void login(String userName, String password) {
         toggleButton.click();
         inputUserName.sendKeys(userName);
         inputPassword.sendKeys(password);
         loginButton.click();
-        return this;
     }
 
+    public DifferentElementsPage goToDiffElemsPage() {
+        serviceBtn.click();
+        differentElementsBtn.click();
+        return new DifferentElementsPage(driver);
+    }
 }

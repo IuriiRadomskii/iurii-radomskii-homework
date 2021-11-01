@@ -42,6 +42,7 @@ public class BaseTest {
             "Service",
             "Metals & Colors",
             "Elements packs");
+
     protected static String expectedUserNameAtPage;
     protected static String userName;
     protected static String password;
@@ -51,6 +52,9 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         softly = new SoftAssertions();
+        setExpectedUserNameAtPage();
+        setUserName();
+        setPassword();
     }
 
     @AfterClass
@@ -58,11 +62,11 @@ public class BaseTest {
         driver.quit();
     }
 
-    protected static void setExpectedUserNameAtPage() {
+    protected void setExpectedUserNameAtPage() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
             property.load(inputStream);
             expectedUserNameAtPage = property.getProperty("expectedUserNameAtPage");
         } catch (IOException e) {
@@ -70,11 +74,11 @@ public class BaseTest {
         }
     }
 
-    protected static void setUserName() {
+    protected void setUserName() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
             property.load(inputStream);
             userName = property.getProperty("username");
         } catch (IOException e) {
@@ -82,11 +86,11 @@ public class BaseTest {
         }
     }
 
-    protected static void setPassword() {
+    protected void setPassword() {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
             property.load(inputStream);
             password = property.getProperty("password");
         } catch (IOException e) {

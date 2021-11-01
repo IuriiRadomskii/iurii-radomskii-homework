@@ -6,16 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class BasePage extends AbstractPage {
 
-    @FindBy(xpath = "//a[@href='index.html']")
-    private WebElement homeBtn;
-
     BasePage(WebDriver driver) {
         super(driver);
     }
 
-    public IndexPage goToIndexPage() {
-        homeBtn.click();
-        return new IndexPage(driver);
+    public void refresh() {
+        driver.navigate().refresh();
     }
 
     public String getTitle() {
