@@ -10,15 +10,7 @@ import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends BaseTest {
 
-    @BeforeMethod
-    public void navigateToIndexPage() {
-        indexPage = new IndexPage(driver);
-    }
 
-    @AfterMethod
-    public void assertAll() {
-        softly.assertAll();
-    }
 
     @Test
     public void exerciseOneTest() {
@@ -66,5 +58,6 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
               .hasMessageContaining("invalid session id");
+        softly.assertAll();
     }
 }
