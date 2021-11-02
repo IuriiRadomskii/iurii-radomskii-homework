@@ -64,14 +64,19 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         softly = new SoftAssertions();
-        setExpectedUserNameAtPage();
-        setUserName();
-        setPassword();
     }
 
     @AfterClass
     public void clear() {
         driver.quit();
+    }
+
+    @BeforeMethod
+    public void setUp() {
+        indexPage = new IndexPage(driver);
+        setExpectedUserNameAtPage();
+        setUserName();
+        setPassword();
     }
 
     protected void setExpectedUserNameAtPage() {

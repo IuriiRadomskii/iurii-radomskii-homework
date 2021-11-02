@@ -9,16 +9,6 @@ import org.testng.annotations.Test;
 
 public class ExerciseTwoTest extends BaseTest {
 
-    @BeforeMethod
-    public void navigateToIndexPage() {
-        indexPage = new IndexPage(driver);
-    }
-
-    @AfterMethod
-    public void assertAll() {
-        softly.assertAll();
-    }
-
     @Test
     public void exerciseTwoTest() throws InterruptedException {
 
@@ -65,6 +55,7 @@ public class ExerciseTwoTest extends BaseTest {
             .clickInARow(diffPage.getRadioBoxRow())
             .clickInARow(diffPage.getColorOptions());
         softly.assertThat(diffPage.getActualLogs()).isEqualTo(expectedLogs);
+        softly.assertAll();
 
     }
 }
