@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
@@ -29,72 +28,49 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThat(actualIndexPageTitle).isEqualTo(expectedIndexPageTitle);
 
         //3. Assert that user is logged by given username and password
-        WebElement toggleBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver.findElement(By.xpath("//a[@class='dropdown-toggle'][@href='#']")));
+        WebElement toggleBtn = driver.findElement(By.xpath("//a[@class='dropdown-toggle'][@href='#']"));
         toggleBtn.click();
         WebElement inputUserName = driver.findElement(By.id("name"));
         WebElement inputUserPass = driver.findElement(By.id("password"));
         inputUserName.sendKeys(userName);
         inputUserPass.sendKeys(password);
-        WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver.findElement(By.id("login-button")));
+        WebElement loginBtn = driver.findElement(By.id("login-button"));
         loginBtn.click();
-        WebElement contactFormBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(ExpectedConditions
-                .presenceOfElementLocated(By
-                    .xpath("//a[@href='contacts.html']")));
+        WebElement contactFormBtn = driver.findElement(By.xpath("//a[@href='contacts.html']"));
         contactFormBtn.click();
         String actualContactsPageTitle = driver.getTitle();
         driver.navigate().back();
         softly.assertThat(actualContactsPageTitle).isNotEqualTo(actualIndexPageTitle);
 
         //4. Assert that user name is displayed and equals to expected result
-        WebElement userNameLogged = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
+        WebElement userNameLogged = driver.findElement(By.id("user-name"));
         String actualUserNameAtPage = userNameLogged.getText();
         softly.assertThat(actualUserNameAtPage).isEqualTo(expectedUserNameAtPage);
 
         //5. Assert that Different Elements page is opened
-        WebElement leftSidebarServiceBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//ul[@class='sidebar-menu left']/li[@index=3]")));
+        WebElement leftSidebarServiceBtn = driver
+            .findElement(By.xpath("//ul[@class='sidebar-menu left']/li[@index=3]"));
         leftSidebarServiceBtn.click();
-        WebElement leftSidebarDifElemsBtn = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//ul[@class='sub']/li[@index=8]")));
+        WebElement leftSidebarDifElemsBtn = driver.findElement(By.xpath("//ul[@class='sub']/li[@index=8]"));
         leftSidebarDifElemsBtn.click();
         String expectedDifElemsPageTitle = "Different Elements";
         softly.assertThat(expectedDifElemsPageTitle).isEqualTo(driver.getTitle());
 
         //6. Assert that Water and Wind checkboxes are selected
-        WebElement waterCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//label[@class='label-checkbox'][1]/input")));
-        WebElement windCheckBox = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//label[@class='label-checkbox'][3]/input")));
+        WebElement waterCheckBox = driver.findElement(By.xpath("//label[@class='label-checkbox'][1]/input"));
+        WebElement windCheckBox = driver.findElement(By.xpath("//label[@class='label-checkbox'][3]/input"));
         waterCheckBox.click();
         windCheckBox.click();
         softly.assertThat(waterCheckBox.isSelected()).isTrue();
         softly.assertThat(windCheckBox.isSelected()).isTrue();
 
         //7. Assert that 'Selen' radio is checked
-        WebElement selenRadioBox = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//label[@class='label-radio'][4]/input")));
+        WebElement selenRadioBox = driver.findElement(By.xpath("//label[@class='label-radio'][4]/input"));
         selenRadioBox.click();
         softly.assertThat(selenRadioBox.isSelected()).isTrue();
 
         //8. Assert that yellow option in dropdown menu is selected
-        WebElement yellowOption = new WebDriverWait(driver, Duration.ofSeconds(2))
-            .until(driver -> driver
-                .findElement(By
-                    .xpath("//option[text()='Yellow']")));
+        WebElement yellowOption = driver.findElement(By.xpath("//option[text()='Yellow']"));
         yellowOption.click();
         softly.assertThat(yellowOption.isSelected()).isTrue();
 
@@ -103,18 +79,15 @@ public class ExerciseTwoTest extends BaseTest {
         driver.navigate().refresh();
 
         //9.1 Asserting checkboxes logs
-        List<WebElement> checkBoxes = new WebDriverWait(driver, Duration.ofSeconds(2000))
-            .until(driver -> driver.findElements(By.className("label-checkbox")));
+        List<WebElement> checkBoxes = driver.findElements(By.className("label-checkbox"));
         checkCheckBoxes(checkBoxes, driver, softly);
 
         //9.2 Asserting radio boxes logs
-        List<WebElement> radioBoxes = new WebDriverWait(driver, Duration.ofSeconds(2000))
-            .until(driver -> driver.findElements(By.className("label-radio")));
+        List<WebElement> radioBoxes = driver.findElements(By.className("label-radio"));
         checkRadioBoxes(radioBoxes, driver, softly);
 
         //9.3 Asserting color options logs
-        List<WebElement> colorOptions = new WebDriverWait(driver, Duration.ofSeconds(2000))
-            .until(driver -> driver.findElements(By.tagName("option")));
+        List<WebElement> colorOptions = driver.findElements(By.tagName("option"));
         checkColorOptions(colorOptions, driver, softly);
 
         //10. Assert that browser is closed

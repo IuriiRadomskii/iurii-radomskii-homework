@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,12 +14,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-
-    static {
-        setExpectedUserNameAtPage();
-        setUserName();
-        setPassword();
-    }
 
     protected WebDriver driver;
     protected SoftAssertions softly;
@@ -40,9 +35,17 @@ public class BaseTest {
     @BeforeMethod
     public void setupWindow() {
         System.out.println("Before method");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.navigate().to(url);
         driver.manage().window().maximize();
+        userName = getProperty("username");
+        password = getProperty("password");
+        expectedUserNameAtPage = getProperty("expectedUserNameAtPage");
     }
+
+    protected static String expectedUserNameAtPage;
+    protected static String userName;
+    protected static String password;
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
@@ -62,43 +65,16 @@ public class BaseTest {
             "Metals & Colors",
             "Elements packs");
 
-    protected static String expectedUserNameAtPage;
-    protected static String userName;
-    protected static String password;
-
-    protected static void setExpectedUserNameAtPage() {
+    protected String getProperty(String propertyName) {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
             inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
             property.load(inputStream);
-            expectedUserNameAtPage = property.getProperty("expectedUserNameAtPage");
+            return property.getProperty(propertyName);
         } catch (IOException e) {
             System.err.println("Property file doesn't exist");
         }
-    }
-
-    protected static void setUserName() {
-        FileInputStream inputStream;
-        Properties property = new Properties();
-        try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
-            property.load(inputStream);
-            userName = property.getProperty("username");
-        } catch (IOException e) {
-            System.err.println("Property file doesn't exist");
-        }
-    }
-
-    protected static void setPassword() {
-        FileInputStream inputStream;
-        Properties property = new Properties();
-        try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw2/credentials.properties");
-            property.load(inputStream);
-            password = property.getProperty("password");
-        } catch (IOException e) {
-            System.err.println("Property file doesn't exist");
-        }
+        return "";
     }
 }
