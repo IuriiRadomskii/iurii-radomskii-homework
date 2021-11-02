@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
@@ -34,6 +35,13 @@ public class BaseTest {
     public void clear() {
         System.out.println("After class");
         driver.quit();
+    }
+
+    @BeforeMethod
+    public void setupWindow() {
+        System.out.println("Before method");
+        driver.navigate().to(url);
+        driver.manage().window().maximize();
     }
 
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
