@@ -22,6 +22,7 @@
     <profiles>
         <profile>
             <id>homework03-all-test</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/all-test-suite</suite.name.xml>
             </properties>
@@ -82,7 +83,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire.version}</version>
+        <configuration>
+            <suiteXmlFiles>${suite.name.xml}</suiteXmlFiles>
+        </configuration>
     </plugin>
 </plugins>
 </build>
+
 </project>
