@@ -1,4 +1,3 @@
-
 package com.epam.tc.hw2.ex2;
 
 import com.epam.tc.hw2.BaseTest;
@@ -173,5 +172,4 @@ public class ExerciseTwoTest extends BaseTest {
             softly.assertThat(expectedLogText).isSubstringOf(actualLogText);
         }
     }
-
 }

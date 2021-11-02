@@ -1,4 +1,3 @@
-
 package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.BaseTest;
