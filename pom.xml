@@ -22,6 +22,7 @@
     <profiles>
         <profile>
             <id>homework02-test-suite</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw2/test_suits/AllHomework02TestSuite</suite.name.xml>
             </properties>
