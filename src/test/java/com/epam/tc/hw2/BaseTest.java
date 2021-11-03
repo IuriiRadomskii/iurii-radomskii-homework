@@ -39,28 +39,23 @@ public class BaseTest {
             "Elements packs");
 
     @BeforeClass
-    public void setupChromeDriver() {
+    public void setup() {
         System.out.println("Before class");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         softly = new SoftAssertions();
-    }
-
-    @AfterClass
-    public void clear() {
-        System.out.println("After class");
-        driver.quit();
-    }
-
-    @BeforeMethod
-    public void setupWindow() {
-        System.out.println("Before method");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.navigate().to(url);
         driver.manage().window().maximize();
         userName = getProperty("username");
         password = getProperty("password");
         expectedUserNameAtPage = getProperty("expectedUserNameAtPage");
+    }
+
+    @AfterClass
+    public void tearDown() {
+        System.out.println("After class");
+        driver.quit();
     }
 
     protected String getProperty(String propertyName) {

@@ -21,6 +21,31 @@
     </properties>
 
     <profiles>
+
+        <profile>
+            <id>homework01-all-calculator-test</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AllCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>homework01-add-subtract-calculator-test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>homework01-multiply-divide-calculator-test</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/MultiplyDivideCalculatorTestSuite</suite.name.xml>
+            </properties>
+        </profile>
+
         <profile>
             <id>homework02-test-suite</id>
             <activation><activeByDefault>true</activeByDefault></activation>
@@ -28,10 +53,17 @@
                 <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw2/test_suits/AllHomework02TestSuite</suite.name.xml>
             </properties>
         </profile>
+
     </profiles>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.epam.tc.hw1.calculator</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -67,7 +99,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>

@@ -2,6 +2,6 @@ target
 *.iml
 *.docx
 .idea
-*.docx
 etc.
 src/main/java/Draft.java
+.allure

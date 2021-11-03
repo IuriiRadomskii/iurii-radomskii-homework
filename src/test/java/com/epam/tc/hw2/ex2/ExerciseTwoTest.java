@@ -17,8 +17,6 @@ public class ExerciseTwoTest extends BaseTest {
     @Test
     public void exerciseTwoTest() {
         //1. Assert that page is opened and downloaded
-        driver.navigate().to(url);
-        driver.manage().window().maximize();
         String indexWindowURL = driver.getCurrentUrl();
         softly.assertThat(indexWindowURL).isEqualTo(url);
 
