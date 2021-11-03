@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="MultiplyDivideCalculatorTestSuite">
+    <test name="DivideCalculatorTest">
+        <classes>
+            <class name="com.epam.tc.hw1.tests.CalculatorDivideTest"/>
+        </classes>
+    </test>
+    <test name="MultiplyCalculatorTest">
+        <classes>
+            <class name="com.epam.tc.hw1.tests.CalculatorMultiplyTest"/>
+        </classes>
+    </test>
+</suite>
