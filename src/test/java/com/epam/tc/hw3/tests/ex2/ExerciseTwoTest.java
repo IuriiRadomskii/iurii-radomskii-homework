@@ -1,16 +1,13 @@
 package com.epam.tc.hw3.tests.ex2;
 
 import com.epam.tc.hw3.pages.DifferentElementsPage;
-import com.epam.tc.hw3.pages.IndexPage;
 import com.epam.tc.hw3.tests.BaseTest;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExerciseTwoTest extends BaseTest {
 
     @Test
-    public void exerciseTwoTest() throws InterruptedException {
+    public void exerciseTwoTest() {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage();
