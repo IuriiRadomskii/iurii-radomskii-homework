@@ -17,6 +17,10 @@ public class BasePage {
         return this;
     }
 
+    public void closeBrowser() {
+        driver.close();
+    }
+
     public String getTitle() {
         return driver.getTitle();
     }

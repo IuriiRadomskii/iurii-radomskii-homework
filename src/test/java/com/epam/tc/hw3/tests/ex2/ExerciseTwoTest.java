@@ -2,6 +2,7 @@ package com.epam.tc.hw3.tests.ex2;
 
 import com.epam.tc.hw3.pages.DifferentElementsPage;
 import com.epam.tc.hw3.tests.BaseTest;
+import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.Test;
 
 public class ExerciseTwoTest extends BaseTest {
@@ -50,6 +51,12 @@ public class ExerciseTwoTest extends BaseTest {
             .clickInARow(diffPage.getRadioBoxRow())
             .clickInARow(diffPage.getColorOptions());
         softly.assertThat(diffPage.getActualLogs()).isEqualTo(expectedLogs);
+
+        //10. Assert that browser is closed
+        indexPage.closeBrowser();
+        softly.assertThatThrownBy(() -> driver.getWindowHandle())
+              .isInstanceOf(NoSuchSessionException.class)
+              .hasMessageContaining("invalid session id");
         softly.assertAll();
 
     }
