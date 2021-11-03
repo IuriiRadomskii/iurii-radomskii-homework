@@ -14,4 +14,3 @@ public class CalculatorAddTest extends CalculatorBaseTest {
                   .isEqualTo(expected);
     }
 }
-
