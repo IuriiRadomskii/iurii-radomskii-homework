@@ -53,7 +53,7 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThat(diffPage.getActualLogs()).isEqualTo(expectedLogs);
 
         //10. Assert that browser is closed
-        indexPage.closeBrowser();
+        indexPage.close();
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
               .hasMessageContaining("invalid session id");

@@ -17,7 +17,7 @@ public class BasePage {
         return this;
     }
 
-    public void closeBrowser() {
+    public void close() {
         driver.close();
     }
 
