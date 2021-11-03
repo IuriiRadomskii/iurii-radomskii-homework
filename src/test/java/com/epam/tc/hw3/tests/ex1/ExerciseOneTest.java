@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends BaseTest {
 
-
-
     @Test
     public void exerciseOneTest() {
 

@@ -1,22 +1,17 @@
-
 package com.epam.tc.hw3.tests;
 
 import com.epam.tc.hw3.pages.IndexPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -25,6 +20,9 @@ public class BaseTest {
     protected WebDriver driver;
     protected SoftAssertions softly;
     protected IndexPage indexPage;
+    protected String expectedUserNameAtPage;
+    protected String userName;
+    protected String password;
     protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
     protected final Set<String> expectedHeadersBtnsName = Set
         .of("HOME",
@@ -55,12 +53,10 @@ public class BaseTest {
         "Earth: condition changed to true",
         "Water: condition changed to true"
     );
-    protected static String expectedUserNameAtPage;
-    protected static String userName;
-    protected static String password;
 
     @BeforeClass
     public void setupChromeDriver() {
+        System.out.println("Before class");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         softly = new SoftAssertions();
@@ -68,52 +64,30 @@ public class BaseTest {
 
     @AfterClass
     public void clear() {
+        System.out.println("After class");
         driver.quit();
     }
 
     @BeforeMethod
-    public void setUp() {
+    public void setupWindow() {
+        System.out.println("Before method");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         indexPage = new IndexPage(driver);
-        setExpectedUserNameAtPage();
-        setUserName();
-        setPassword();
+        userName = getProperty("username");
+        password = getProperty("password");
+        expectedUserNameAtPage = getProperty("expectedUserNameAtPage");
     }
 
-    protected void setExpectedUserNameAtPage() {
+    protected String getProperty(String propertyName) {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
             inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
             property.load(inputStream);
-            expectedUserNameAtPage = property.getProperty("expectedUserNameAtPage");
+            return property.getProperty(propertyName);
         } catch (IOException e) {
             System.err.println("Property file doesn't exist");
         }
+        return "";
     }
-
-    protected void setUserName() {
-        FileInputStream inputStream;
-        Properties property = new Properties();
-        try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
-            property.load(inputStream);
-            userName = property.getProperty("username");
-        } catch (IOException e) {
-            System.err.println("Property file doesn't exist");
-        }
-    }
-
-    protected void setPassword() {
-        FileInputStream inputStream;
-        Properties property = new Properties();
-        try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
-            property.load(inputStream);
-            password = property.getProperty("password");
-        } catch (IOException e) {
-            System.err.println("Property file doesn't exist");
-        }
-    }
-
-
 }
