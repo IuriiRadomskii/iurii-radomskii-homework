@@ -13,21 +13,24 @@
         <maven.compiler.target>11</maven.compiler.target>
         <testng.version>7.4.0</testng.version>
         <assertj.version>3.20.2</assertj.version>
-        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+        <selenium.version>4.0.0</selenium.version>
+        <slf4j.version>2.0.0-alpha5</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <calculator.path>com.epam.tc.hw1.calculator</calculator.path>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
     </properties>
 
     <profiles>
+
         <profile>
-            <id>all-calculator-test-suite-profile</id>
+            <id>homework01-all-calculator-test</id>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AllCalculatorTestSuite</suite.name.xml>
             </properties>
         </profile>
 
         <profile>
-            <id>add-subtract-calculator-test-suite-profile</id>
+            <id>homework01-add-subtract-calculator-test</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -37,11 +40,20 @@
         </profile>
 
         <profile>
-            <id>multiply-divide-calculator-test-suite-profile</id>
+            <id>homework01-multiply-divide-calculator-test</id>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/MultiplyDivideCalculatorTestSuite</suite.name.xml>
             </properties>
         </profile>
+
+        <profile>
+            <id>homework02-test-suite</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw2/test_suits/AllHomework02TestSuite</suite.name.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
@@ -52,20 +64,40 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
         </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -80,5 +112,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
