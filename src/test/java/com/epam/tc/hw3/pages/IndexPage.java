@@ -58,10 +58,10 @@ public class IndexPage extends BasePage {
         super(driver);
     }
 
-
-    public void openPage() {
+    public IndexPage openPage() {
         driver.navigate().to(url);
         driver.manage().window().maximize();
+        return this;
     }
 
     public String getActualPageTitle() {
@@ -88,7 +88,7 @@ public class IndexPage extends BasePage {
             .collect(Collectors.toCollection(TreeSet::new));
     }
 
-    public Frame switchTo(WebElement frame) {
+    public Frame switchToFrame(WebElement frame) {
         driver.switchTo().frame(frame);
         return new Frame(driver);
     }
@@ -104,11 +104,12 @@ public class IndexPage extends BasePage {
         return userNameText;
     }
 
-    public void login(String userName, String password) {
+    public IndexPage login(String userName, String password) {
         toggleButton.click();
         inputUserName.sendKeys(userName);
         inputPassword.sendKeys(password);
         loginButton.click();
+        return this;
     }
 
     public DifferentElementsPage goToDiffElemsPage() {

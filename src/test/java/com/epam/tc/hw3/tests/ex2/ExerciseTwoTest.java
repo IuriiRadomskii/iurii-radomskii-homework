@@ -35,19 +35,17 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThat(diffPage.getWindCheckBox().isSelected()).isTrue();
 
         //7. Assert that 'Selen' radio is checked
-        diffPage
-            .clickElement(diffPage.getSelenRadio());
+        diffPage.clickElement(diffPage.getSelenRadio());
         softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
 
         //8. Assert that yellow option in dropdown menu is selected
-        diffPage
-            .clickElement(diffPage.getYellowOption());
+        diffPage.clickElement(diffPage.getYellowOption());
         softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
 
         //9. Assert that there is a separate log entry for each checkbox, radio button, and color option
         // corresponding to their status.
-        diffPage.refresh();
         diffPage
+            .refresh()
             .clickInARow(diffPage.getCheckBoxRow())
             .clickInARow(diffPage.getRadioBoxRow())
             .clickInARow(diffPage.getColorOptions());

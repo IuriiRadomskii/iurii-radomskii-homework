@@ -12,8 +12,9 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void refresh() {
+    public BasePage refresh() {
         driver.navigate().refresh();
+        return this;
     }
 
     public String getTitle() {

@@ -49,6 +49,12 @@ public class DifferentElementsPage extends BasePage {
         return this;
     }
 
+    @Override
+    public DifferentElementsPage refresh() {
+        driver.navigate().refresh();
+        return this;
+    }
+
     public DifferentElementsPage clickInARow(List<WebElement> elementList) {
         for (WebElement elem : elementList) {
             elem.click();

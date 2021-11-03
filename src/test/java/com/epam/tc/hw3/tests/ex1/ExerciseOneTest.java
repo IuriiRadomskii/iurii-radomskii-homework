@@ -38,7 +38,7 @@ public class ExerciseOneTest extends BaseTest {
 
         //9. Assert that "Frame Button" in frame exists
         String indexPageHandle = indexPage.getWindowHandle();
-        Frame frame = indexPage.switchTo(indexPage.getIframe());
+        Frame frame = indexPage.switchToFrame(indexPage.getIframe());
         softly.assertThat(frame.getFrameButton().isEnabled()).isTrue();
 
         //10. Assert that driver switched to original window
