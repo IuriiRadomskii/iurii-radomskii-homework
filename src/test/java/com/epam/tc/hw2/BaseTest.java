@@ -17,6 +17,26 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected SoftAssertions softly;
+    protected String expectedUserNameAtPage;
+    protected String userName;
+    protected String password;
+    protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
+    protected final Set<String> expectedHeadersBtnsName = Set
+        .of("HOME",
+            "CONTACT FORM",
+            "SERVICE",
+            "METALS & COLORS");
+    protected final Set<String> expectedTextUnderIcons = Set
+        .of("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…",
+            "To be flexible and\ncustomizable",
+            "To be multiplatform",
+            "To include good practices\nand ideas from successful\nEPAM project");
+    protected final Set<String> expectedNavigationSidebarText = Set
+        .of("Home",
+            "Contact form",
+            "Service",
+            "Metals & Colors",
+            "Elements packs");
 
     @BeforeClass
     public void setupChromeDriver() {
@@ -42,28 +62,6 @@ public class BaseTest {
         password = getProperty("password");
         expectedUserNameAtPage = getProperty("expectedUserNameAtPage");
     }
-
-    protected static String expectedUserNameAtPage;
-    protected static String userName;
-    protected static String password;
-
-    protected final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    protected final Set<String> expectedHeadersBtnsName = Set
-        .of("HOME",
-            "CONTACT FORM",
-            "SERVICE",
-            "METALS & COLORS");
-    protected final Set<String> expectedTextUnderIcons = Set
-        .of("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…",
-            "To be flexible and\ncustomizable",
-            "To be multiplatform",
-            "To include good practices\nand ideas from successful\nEPAM project");
-    protected final Set<String> expectedNavigationSidebarText = Set
-        .of("Home",
-            "Contact form",
-            "Service",
-            "Metals & Colors",
-            "Elements packs");
 
     protected String getProperty(String propertyName) {
         FileInputStream inputStream;
