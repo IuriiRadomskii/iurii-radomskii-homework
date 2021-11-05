@@ -32,8 +32,15 @@ public class DifferentElementsPage extends BasePage {
     @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
     private List<WebElement> logs;
 
+    private String handle;
+    private String url;
+    private String pageTitle;
+
     DifferentElementsPage(WebDriver driver) {
         super(driver);
+        handle = getWindowHandle();
+        url = getCurrentURL();
+        pageTitle = getTitle();
     }
 
     public List<String> getActualLogs() {
@@ -88,5 +95,17 @@ public class DifferentElementsPage extends BasePage {
 
     public List<WebElement> getColorOptions() {
         return colorOptions;
+    }
+
+    public String getHandle() {
+        return handle;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPageTitle() {
+        return pageTitle;
     }
 }

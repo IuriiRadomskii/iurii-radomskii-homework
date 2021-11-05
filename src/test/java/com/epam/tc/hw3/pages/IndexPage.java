@@ -1,6 +1,7 @@
 
 package com.epam.tc.hw3.pages;
 
+import com.epam.tc.hw3.tests.data.Expected;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -10,9 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class IndexPage extends BasePage {
-
-    public final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    public final String title = "Home Page";
 
     @FindBy(xpath = "//a[@class='dropdown-toggle'][@href='#']")
     private WebElement toggleButton;
@@ -50,6 +48,11 @@ public class IndexPage extends BasePage {
     @FindBy(xpath = "//ul[@class='sub']/li[@index=8]")
     private WebElement differentElementsBtn;
 
+    private String handle;
+    private String url;
+    private String pageTitle;
+
+
     public WebElement getIframe() {
         return iframe;
     }
@@ -58,17 +61,16 @@ public class IndexPage extends BasePage {
         super(driver);
     }
 
-    public IndexPage openPage() {
+    public IndexPage openPage(String url) {
         driver.navigate().to(url);
         driver.manage().window().maximize();
+        this.handle = getWindowHandle();
+        this.url = getCurrentURL();
+        this.pageTitle = getTitle();
         return this;
     }
 
-    public String getActualPageTitle() {
-        return driver.getTitle();
-    }
-
-    public Set<String> getHeadersBtnsText() {
+    public Set<String> getHeadersBtnsName() {
         return headersBtns
             .stream()
             .map(WebElement::getText)
@@ -100,6 +102,10 @@ public class IndexPage extends BasePage {
             .collect(Collectors.toSet());
     }
 
+    public String getActualUserNameAtPage() {
+        return userNameText.getText();
+    }
+
     public WebElement getUserNameText() {
         return userNameText;
     }
@@ -116,5 +122,17 @@ public class IndexPage extends BasePage {
         serviceBtn.click();
         differentElementsBtn.click();
         return new DifferentElementsPage(driver);
+    }
+
+    public String getHandle() {
+        return handle;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPageTitle() {
+        return pageTitle;
     }
 }

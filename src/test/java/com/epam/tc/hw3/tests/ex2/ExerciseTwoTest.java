@@ -2,6 +2,7 @@ package com.epam.tc.hw3.tests.ex2;
 
 import com.epam.tc.hw3.pages.DifferentElementsPage;
 import com.epam.tc.hw3.tests.BaseTest;
+import com.epam.tc.hw3.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.Test;
 
@@ -11,22 +12,22 @@ public class ExerciseTwoTest extends BaseTest {
     public void exerciseTwoTest() {
 
         //1. Assert that page is opened and downloaded
-        indexPage.openPage();
-        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(url);
+        indexPage.openPage(Expected.indexURL);
+        softly.assertThat(indexPage.getUrl()).isEqualTo(Expected.indexURL);
 
         //2. Assert that page title is 'Home Page'
-        softly.assertThat(indexPage.getActualPageTitle()).isEqualTo(indexPage.title);
+        softly.assertThat(indexPage.getPageTitle()).isEqualTo(Expected.indexTitle);
 
         //3. Assert that user is logged by given username and password
         indexPage.login(userName, password);
         softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
 
         //4. Assert that user name is displayed and equals to expected result
-        softly.assertThat(indexPage.getUserNameText().getText()).isEqualTo(expectedUserNameAtPage);
+        softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(Expected.userNameAtPage);
 
         //5. Assert that Different Elements page is opened
         DifferentElementsPage diffPage = indexPage.goToDiffElemsPage();
-        softly.assertThat("Different Elements").isEqualTo(diffPage.getTitle());
+        softly.assertThat(diffPage.getPageTitle()).isEqualTo(Expected.differentElementsPageTitle);
 
         //6. Assert that Water and Wind checkboxes are selected
         diffPage
@@ -50,7 +51,7 @@ public class ExerciseTwoTest extends BaseTest {
             .clickInARow(diffPage.getCheckBoxRow())
             .clickInARow(diffPage.getRadioBoxRow())
             .clickInARow(diffPage.getColorOptions());
-        softly.assertThat(diffPage.getActualLogs()).isEqualTo(expectedLogs);
+        softly.assertThat(diffPage.getActualLogs()).isEqualTo(Expected.logs);
 
         //10. Assert that browser is closed
         indexPage.close();

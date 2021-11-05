@@ -17,19 +17,20 @@ public class BasePage {
         return this;
     }
 
+
     public void close() {
         driver.close();
     }
 
-    public String getTitle() {
+    protected String getTitle() {
         return driver.getTitle();
     }
 
-    public String getCurrentURL() {
+    protected String getCurrentURL() {
         return driver.getCurrentUrl();
     }
 
-    public String getWindowHandle() {
+    protected String getWindowHandle() {
         return driver.getWindowHandle();
     }
 
