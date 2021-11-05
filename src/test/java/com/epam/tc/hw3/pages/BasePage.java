@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
 
     protected WebDriver driver;
+    protected String handle;
+
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -22,17 +24,20 @@ public class BasePage {
         driver.close();
     }
 
-    protected String getTitle() {
+    public String getTitle() {
         return driver.getTitle();
     }
 
-    protected String getCurrentURL() {
+    public String getCurrentURL() {
         return driver.getCurrentUrl();
     }
 
-    protected String getWindowHandle() {
+    public String getWindowHandle() {
         return driver.getWindowHandle();
     }
 
+    public String getHandle() {
+        return handle;
+    }
 
 }

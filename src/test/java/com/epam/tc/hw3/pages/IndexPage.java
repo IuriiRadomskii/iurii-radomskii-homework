@@ -48,11 +48,6 @@ public class IndexPage extends BasePage {
     @FindBy(xpath = "//ul[@class='sub']/li[@index=8]")
     private WebElement differentElementsBtn;
 
-    private String handle;
-    private String url;
-    private String pageTitle;
-
-
     public WebElement getIframe() {
         return iframe;
     }
@@ -65,8 +60,6 @@ public class IndexPage extends BasePage {
         driver.navigate().to(url);
         driver.manage().window().maximize();
         this.handle = getWindowHandle();
-        this.url = getCurrentURL();
-        this.pageTitle = getTitle();
         return this;
     }
 
@@ -92,7 +85,7 @@ public class IndexPage extends BasePage {
 
     public Frame switchToFrame(WebElement frame) {
         driver.switchTo().frame(frame);
-        return new Frame(driver);
+        return new Frame(driver, this);
     }
 
     public Set<String> getActualNavigationSidebarText() {
@@ -124,15 +117,4 @@ public class IndexPage extends BasePage {
         return new DifferentElementsPage(driver);
     }
 
-    public String getHandle() {
-        return handle;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getPageTitle() {
-        return pageTitle;
-    }
 }

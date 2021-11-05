@@ -13,10 +13,10 @@ public class ExerciseTwoTest extends BaseTest {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage(Expected.indexURL);
-        softly.assertThat(indexPage.getUrl()).isEqualTo(Expected.indexURL);
+        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(Expected.indexURL);
 
         //2. Assert that page title is 'Home Page'
-        softly.assertThat(indexPage.getPageTitle()).isEqualTo(Expected.indexTitle);
+        softly.assertThat(indexPage.getTitle()).isEqualTo(Expected.indexTitle);
 
         //3. Assert that user is logged by given username and password
         indexPage.login(userName, password);
@@ -27,7 +27,7 @@ public class ExerciseTwoTest extends BaseTest {
 
         //5. Assert that Different Elements page is opened
         DifferentElementsPage diffPage = indexPage.goToDiffElemsPage();
-        softly.assertThat(diffPage.getPageTitle()).isEqualTo(Expected.differentElementsPageTitle);
+        softly.assertThat(diffPage.getTitle()).isEqualTo(Expected.differentElementsPageTitle);
 
         //6. Assert that Water and Wind checkboxes are selected
         diffPage

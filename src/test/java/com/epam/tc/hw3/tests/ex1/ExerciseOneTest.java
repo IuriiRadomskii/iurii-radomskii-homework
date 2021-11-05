@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.tests.ex1;
 
 import com.epam.tc.hw3.pages.Frame;
+import com.epam.tc.hw3.pages.IndexPage;
 import com.epam.tc.hw3.tests.BaseTest;
 import com.epam.tc.hw3.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
@@ -13,7 +14,7 @@ public class ExerciseOneTest extends BaseTest {
 
         //1. Assert that page is opened and downloaded
         indexPage.openPage(Expected.indexURL);
-        softly.assertThat(indexPage.getUrl()).isEqualTo(Expected.indexURL);
+        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(Expected.indexURL);
 
         //2. Assert that page title is 'Home Page'
         softly.assertThat(indexPage.getTitle()).isEqualTo(Expected.indexTitle);
@@ -42,7 +43,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(frame.getFrameButton().isEnabled()).isTrue();
 
         //10. Assert that driver switched to original window
-        indexPage = frame.switchBackTo(indexPage);
+        indexPage = (IndexPage) frame.switchBackTo();
         softly.assertThat(driver.getWindowHandle()).isEqualTo(indexPage.getHandle());
 
         //11. Assert that left sidebar menu has 5 items and they have proper names

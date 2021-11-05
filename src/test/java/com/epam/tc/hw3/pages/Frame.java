@@ -4,21 +4,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Frame extends IndexPage {
+public class Frame extends BasePage {
 
     @FindBy(id = "frame-button")
     private WebElement frameButton;
 
-    Frame(WebDriver driver) {
+    private BasePage parent;
+
+    Frame(WebDriver driver, BasePage parent) {
         super(driver);
+        this.parent = parent;
     }
 
     public WebElement getFrameButton() {
         return frameButton;
     }
 
-    public IndexPage switchBackTo(IndexPage indexPage) {
-        driver.switchTo().window(super.getHandle());
-        return indexPage;
+    public BasePage switchBackTo() {
+        driver.switchTo().window(parent.getHandle());
+        return parent;
     }
 }
