@@ -8,7 +8,6 @@ public class BasePage {
     protected WebDriver driver;
     protected String handle;
 
-
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -18,7 +17,6 @@ public class BasePage {
         driver.navigate().refresh();
         return this;
     }
-
 
     public void close() {
         driver.close();

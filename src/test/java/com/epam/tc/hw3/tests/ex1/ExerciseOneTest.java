@@ -44,7 +44,7 @@ public class ExerciseOneTest extends BaseTest {
 
         //10. Assert that driver switched to original window
         indexPage = (IndexPage) frame.switchBackTo();
-        softly.assertThat(driver.getWindowHandle()).isEqualTo(indexPage.getHandle());
+        softly.assertThat(indexPage.getWindowHandle()).isEqualTo(indexPage.getHandle());
 
         //11. Assert that left sidebar menu has 5 items and they have proper names
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
