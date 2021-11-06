@@ -9,11 +9,19 @@ public class Frame extends BasePage {
     @FindBy(id = "frame-button")
     private WebElement frameButton;
 
-    Frame(WebDriver driver) {
+    private BasePage parent;
+
+    Frame(WebDriver driver, BasePage parent) {
         super(driver);
+        this.parent = parent;
     }
 
     public WebElement getFrameButton() {
         return frameButton;
+    }
+
+    public BasePage switchBackTo() {
+        driver.switchTo().window(parent.getHandle());
+        return parent;
     }
 }

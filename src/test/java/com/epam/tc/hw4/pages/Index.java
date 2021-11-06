@@ -9,10 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class IndexPage extends BasePage {
-
-    public final String url = "https://jdi-testing.github.io/jdi-light/index.html";
-    public final String title = "Home Page";
+public class Index extends BasePage {
 
     @FindBy(xpath = "//a[@class='dropdown-toggle'][@href='#']")
     private WebElement toggleButton;
@@ -54,21 +51,18 @@ public class IndexPage extends BasePage {
         return iframe;
     }
 
-    public IndexPage(WebDriver driver) {
+    public Index(WebDriver driver) {
         super(driver);
     }
 
-    public IndexPage openPage() {
+    public Index openPage(String url) {
         driver.navigate().to(url);
         driver.manage().window().maximize();
+        this.handle = getWindowHandle();
         return this;
     }
 
-    public String getActualPageTitle() {
-        return driver.getTitle();
-    }
-
-    public Set<String> getHeadersBtnsText() {
+    public Set<String> getHeadersBtnsName() {
         return headersBtns
             .stream()
             .map(WebElement::getText)
@@ -90,7 +84,7 @@ public class IndexPage extends BasePage {
 
     public Frame switchToFrame(WebElement frame) {
         driver.switchTo().frame(frame);
-        return new Frame(driver);
+        return new Frame(driver, this);
     }
 
     public Set<String> getActualNavigationSidebarText() {
@@ -100,11 +94,15 @@ public class IndexPage extends BasePage {
             .collect(Collectors.toSet());
     }
 
+    public String getActualUserNameAtPage() {
+        return userNameText.getText();
+    }
+
     public WebElement getUserNameText() {
         return userNameText;
     }
 
-    public IndexPage login(String userName, String password) {
+    public Index login(String userName, String password) {
         toggleButton.click();
         inputUserName.sendKeys(userName);
         inputPassword.sendKeys(password);
@@ -112,9 +110,10 @@ public class IndexPage extends BasePage {
         return this;
     }
 
-    public DifferentElementsPage goToDiffElemsPage() {
+    public DifferentElements goToDiffElemsPage() {
         serviceBtn.click();
         differentElementsBtn.click();
-        return new DifferentElementsPage(driver);
+        return new DifferentElements(driver);
     }
+
 }

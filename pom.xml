@@ -68,61 +68,75 @@
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/homework03-test-suite</suite.name.xml>
             </properties>
         </profile>
+
+        <profile>
+            <id>homework04-all-test</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/all-test-suite</suite.name.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework04-ex1-test</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/ex1-test-suite</suite.name.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework04-ex2-test</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/ex2-test-suite</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
+
         <dependency>
             <groupId>com.epam.tc.hw1.calculator</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
-        </dependency>
-
+        </dependency> <!-- calculator -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency> <!-- testng -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
-        </dependency>
-
+        </dependency> <!-- assertj -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-        </dependency>
+        </dependency> <!-- selenium -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
             <scope>test</scope>
-        </dependency>
-
+        </dependency> <!-- webdrivermanager -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
+        </dependency> <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        </dependency> <!-- slf4j -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure-testng.version}</version>
-
-        </dependency>
-
+        </dependency> <!-- allure-testng -->
 
     </dependencies>
 

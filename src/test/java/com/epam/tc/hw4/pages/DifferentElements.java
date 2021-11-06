@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DifferentElementsPage extends BasePage {
+public class DifferentElements extends BasePage {
 
     @FindBy(xpath = "//label[@class='label-checkbox'][1]/input")
     private WebElement waterCheckBox;
@@ -32,7 +32,7 @@ public class DifferentElementsPage extends BasePage {
     @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
     private List<WebElement> logs;
 
-    DifferentElementsPage(WebDriver driver) {
+    DifferentElements(WebDriver driver) {
         super(driver);
     }
 
@@ -44,18 +44,18 @@ public class DifferentElementsPage extends BasePage {
                    .map(String::new).collect(Collectors.toList());
     }
 
-    public DifferentElementsPage clickElement(WebElement element) {
+    public DifferentElements clickElement(WebElement element) {
         element.click();
         return this;
     }
 
     @Override
-    public DifferentElementsPage refresh() {
+    public DifferentElements refresh() {
         driver.navigate().refresh();
         return this;
     }
 
-    public DifferentElementsPage clickInARow(List<WebElement> elementList) {
+    public DifferentElements clickInARow(List<WebElement> elementList) {
         for (WebElement elem : elementList) {
             elem.click();
         }
@@ -89,4 +89,5 @@ public class DifferentElementsPage extends BasePage {
     public List<WebElement> getColorOptions() {
         return colorOptions;
     }
+
 }

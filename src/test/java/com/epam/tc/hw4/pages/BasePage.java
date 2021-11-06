@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
 
     protected WebDriver driver;
+    protected String handle;
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -33,5 +34,8 @@ public class BasePage {
         return driver.getWindowHandle();
     }
 
+    public String getHandle() {
+        return handle;
+    }
 
 }
