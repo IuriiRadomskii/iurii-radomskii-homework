@@ -7,15 +7,15 @@ import com.epam.tc.hw4.tests.steps.ExerciseOneSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExerciseOneTest extends BaseTest {
+public class ExerciseOneTestWithInvalidCredentials extends BaseTest {
 
     private ExerciseOneSteps exOneSteps;
 
     @BeforeMethod
     private void setupExerciseOneSteps() {
         this.exOneSteps = new ExerciseOneSteps(driver);
-        userName = PropertyInit.getProperty("username");
-        password = PropertyInit.getProperty("password");
+        userName = PropertyInit.getProperty("invalid_username");
+        password = PropertyInit.getProperty("invalid_password");
 
     }
 

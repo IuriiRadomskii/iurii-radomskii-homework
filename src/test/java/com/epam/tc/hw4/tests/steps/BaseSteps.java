@@ -25,13 +25,13 @@ public class BaseSteps {
     }
 
     @Step("Assert that Index Page is opened")
-    public void assertLoginPageUrl() {
-        softly.assertThat(loginPage.getCurrentURL()).isEqualTo(Expected.homePageURL);
+    public void assertLoginPageUrl(String expectedHomePageUrl) {
+        softly.assertThat(loginPage.getCurrentURL()).isEqualTo(expectedHomePageUrl);
     }
 
     @Step("Assert Index Page title")
-    public void assertLoginPageTitle() {
-        softly.assertThat(loginPage.getTitle()).isEqualTo(Expected.homePageTitle);
+    public void assertLoginPageTitle(String expectedHomePageTitle) {
+        softly.assertThat(loginPage.getTitle()).isEqualTo(expectedHomePageTitle);
     }
 
     @Step("Login. Username: {username}, password: {password}")

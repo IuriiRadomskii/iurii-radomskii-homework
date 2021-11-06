@@ -4,6 +4,7 @@ import com.epam.tc.hw4.pages.DifferentElements;
 import com.epam.tc.hw4.pages.Login;
 import com.epam.tc.hw4.tests.data.Expected;
 import io.qameta.allure.Step;
+import java.util.List;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
@@ -27,8 +28,8 @@ public class ExerciseTwoSteps extends BaseSteps {
     }
 
     @Step("Assert that Different Elements page is opened")
-    public void assertDifferentElementsIsOpened() {
-        softly.assertThat(differentElements.getTitle()).isEqualTo(Expected.differentElementsPageTitle);
+    public void assertDifferentElementsIsOpened(String expectedDifferentElementsPageTitle) {
+        softly.assertThat(differentElements.getTitle()).isEqualTo(expectedDifferentElementsPageTitle);
     }
 
     @Step("Click Water and Wind checkboxes")
@@ -78,8 +79,8 @@ public class ExerciseTwoSteps extends BaseSteps {
     }
 
     @Step("Assert logs")
-    public void assertLogs() {
-        softly.assertThat(differentElements.getActualLogs()).isEqualTo(Expected.logs);
+    public void assertLogs(List<String> expectedLogs) {
+        softly.assertThat(differentElements.getActualLogs()).isEqualTo(expectedLogs);
     }
 
     @Step("Close browser")

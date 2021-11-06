@@ -5,6 +5,7 @@ import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
 import com.epam.tc.hw4.tests.data.Expected;
 import io.qameta.allure.Step;
+import java.util.Set;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
@@ -23,13 +24,13 @@ public class ExerciseOneSteps extends BaseSteps {
     }
 
     @Step("Assert that user name is displayed and equals to expected result")
-    public void assertUserNameAtPage() {
-        softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(Expected.userNameAtPage);
+    public void assertUserNameAtPage(String expectedUserNameAtPage) {
+        softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(expectedUserNameAtPage);
     }
 
     @Step("Assert that headers buttons on loginPage are displayed and have proper names")
-    public void assertHeadersButtons() {
-        softly.assertThat(indexPage.getHeadersBtnsName()).isEqualTo(Expected.headersBtnsName);
+    public void assertHeadersButtons(Set<String> expectedHeadersBtnsName) {
+        softly.assertThat(indexPage.getHeadersBtnsName()).isEqualTo(expectedHeadersBtnsName);
     }
 
     @Step("Assert that index page has 4 images")
@@ -38,8 +39,8 @@ public class ExerciseOneSteps extends BaseSteps {
     }
 
     @Step("Assert that texts under icons have proper text")
-    public void assertTextUnderIcons() {
-        softly.assertThat(indexPage.getActualTextUnderIcons()).isEqualTo(Expected.textUnderIcons);
+    public void assertTextUnderIcons(Set<String> expectedTextUnderIcons) {
+        softly.assertThat(indexPage.getActualTextUnderIcons()).isEqualTo(expectedTextUnderIcons);
     }
 
     @Step("Assert that iframe with 'Frame Button' exists")

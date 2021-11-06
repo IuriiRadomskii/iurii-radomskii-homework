@@ -7,7 +7,7 @@ import com.epam.tc.hw4.tests.steps.ExerciseTwoSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExerciseTwoTest extends BaseTest {
+public class ExerciseTwoTestWithInvalidLogs extends BaseTest {
 
     private ExerciseTwoSteps exTwoSteps;
 
@@ -35,7 +35,7 @@ public class ExerciseTwoTest extends BaseTest {
         exTwoSteps.assertYellow();
         exTwoSteps.refreshPage();
         exTwoSteps.clickAll();
-        exTwoSteps.assertLogs(Expected.logs);
+        exTwoSteps.assertLogs(Expected.invalidLogs);
         exTwoSteps.closeBrowser();
         exTwoSteps.assertClosedBrowser();
         exTwoSteps.assertAll();
