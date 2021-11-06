@@ -4,62 +4,40 @@ import com.epam.tc.hw4.pages.Frame;
 import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.tests.BaseTest;
 import com.epam.tc.hw4.tests.data.Expected;
+import com.epam.tc.hw4.tests.steps.ExerciseOneSteps;
 import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends BaseTest {
 
+    private ExerciseOneSteps exOneSteps;
+
     @BeforeMethod
     private void setupExerciseOneSteps() {
-
+        this.exOneSteps = new ExerciseOneSteps(driver);
     }
 
     @Test
     public void exerciseOneTest() {
 
-        //1. Assert that page is opened and downloaded
-        indexPage.openPage(Expected.indexURL);
-        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(Expected.indexURL);
+        exOneSteps.openPage();
+        exOneSteps.assertLoginPageUrl();
+        exOneSteps.assertLoginPageTitle();
+        exOneSteps.login(userName, password);
+        exOneSteps.assertUserLogged();
+        exOneSteps.assertUserNameAtPage();
+        exOneSteps.assertHeadersButtons();
+        exOneSteps.assertIcons();
+        exOneSteps.assertTextUnderIcons();
+        exOneSteps.assertIframeWithFrameBtn();
+        exOneSteps.switchToFrame();
+        exOneSteps.assertFrameButtonInFrame();
+        exOneSteps.switchBackToWindow();
+        exOneSteps.assertLeftSideBar();
+        exOneSteps.closeBrowser();
+        exOneSteps.assertClosedBrowser();
+        exOneSteps.assertAll();
 
-        //2. Assert that page title is 'Home Page'
-        softly.assertThat(indexPage.getTitle()).isEqualTo(Expected.indexTitle);
-
-        //3. Assert that user is logged by given username and password
-        indexPage.login(userName, password);
-        softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
-
-        //4. Assert that user name is displayed and equals to expected result
-        softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(Expected.userNameAtPage);
-
-        //5. Assert that menu buttons on loginPage are displayed and have proper names
-        softly.assertThat(indexPage.getHeadersBtnsName()).isEqualTo(Expected.headersBtnsName);
-
-        //6. Assert that index page has 4 images
-        softly.assertThat(indexPage.isIconsDisplayed()).isTrue();
-
-        //7. Assert that texts under icons have proper text
-        softly.assertThat(indexPage.getActualTextUnderIcons()).isEqualTo(Expected.textUnderIcons);
-
-        //8. Assert that iframe with "Frame Button" exists
-        softly.assertThat(indexPage.getIframe().isEnabled()).isTrue();
-
-        //9. Assert that "Frame Button" in frame exists
-        Frame frame = indexPage.switchToFrame(indexPage.getIframe());
-        softly.assertThat(frame.getFrameButton().isEnabled()).isTrue();
-
-        //10. Assert that driver switched to original window
-        indexPage = (Index) frame.switchBackTo();
-        softly.assertThat(indexPage.getWindowHandle()).isEqualTo(indexPage.getHandle());
-
-        //11. Assert that left sidebar menu has 5 items and they have proper names
-        softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
-
-        //12. Assert that browser is closed
-        driver.close();
-        softly.assertThatThrownBy(() -> driver.getWindowHandle())
-              .isInstanceOf(NoSuchSessionException.class)
-              .hasMessageContaining("invalid session id");
-        softly.assertAll();
     }
 }

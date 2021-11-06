@@ -2,40 +2,19 @@ package com.epam.tc.hw4.tests.steps;
 
 import com.epam.tc.hw4.pages.Frame;
 import com.epam.tc.hw4.pages.Index;
+import com.epam.tc.hw4.pages.Login;
 import com.epam.tc.hw4.tests.data.Expected;
 import io.qameta.allure.Step;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
 public class ExerciseOneSteps extends BaseSteps {
 
-    private Index indexPage;
     private Frame frame;
 
-    ExerciseOneSteps(WebDriver driver) {
+    public ExerciseOneSteps(WebDriver driver) {
         super(driver);
-        this.indexPage = new Index(driver);
-    }
-
-    @Step("Open browser and navigate to Index Page")
-    public void openPage() {
-        indexPage.openPage(Expected.indexURL);
-    }
-
-    @Step("Assert that Index Page is opened")
-    public void assertIndexUrl() {
-        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(Expected.indexURL);
-    }
-
-    @Step("Assert Index Page title")
-    public void assertIndexPageTitle() {
-        softly.assertThat(indexPage.getTitle()).isEqualTo(Expected.indexTitle);
-    }
-
-    @Step("Login. Username: {username}, password: {password}")
-    public void login(String username, String password) {
-        indexPage.login(username, password);
+        this.loginPage = new Login(driver);
     }
 
     @Step("Assert that user is logged")
@@ -69,7 +48,7 @@ public class ExerciseOneSteps extends BaseSteps {
     }
 
     @Step("Switch to frame with 'Frame Button'")
-    public void assertSwitchToFrame() {
+    public void switchToFrame() {
         this.frame = indexPage.switchToFrame(indexPage.getIframe());
     }
 
@@ -84,7 +63,7 @@ public class ExerciseOneSteps extends BaseSteps {
     }
 
     @Step("Assert that left sidebar menu has 5 items and they have proper names")
-    public void switchLeftSideBar() {
+    public void assertLeftSideBar() {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
     }
 

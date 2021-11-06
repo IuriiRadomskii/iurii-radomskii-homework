@@ -1,6 +1,7 @@
 package com.epam.tc.hw4.tests;
 
 import com.epam.tc.hw4.pages.Index;
+import com.epam.tc.hw4.pages.Login;
 import com.epam.tc.hw4.tests.data.PropertyInit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,7 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected SoftAssertions softly;
+    protected Login loginPage;
     protected Index indexPage;
     protected String userName;
     protected String password;
@@ -25,7 +27,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         softly = new SoftAssertions();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        indexPage = new Index(driver);
+        loginPage = new Login(driver);
         userName = PropertyInit.getProperty("username");
         password = PropertyInit.getProperty("password");
     }

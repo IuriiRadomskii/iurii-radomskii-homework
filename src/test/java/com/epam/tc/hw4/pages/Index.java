@@ -11,18 +11,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class Index extends BasePage {
 
-    @FindBy(xpath = "//a[@class='dropdown-toggle'][@href='#']")
-    private WebElement toggleButton;
-
-    @FindBy(id = "name")
-    private WebElement inputUserName;
-
-    @FindBy(id = "password")
-    private WebElement inputPassword;
-
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-
     @FindBy(id = "user-name")
     private WebElement userNameText;
 
@@ -49,13 +37,7 @@ public class Index extends BasePage {
 
     public Index(WebDriver driver) {
         super(driver);
-    }
-
-    public Index openPage(String url) {
-        driver.navigate().to(url);
-        driver.manage().window().maximize();
         this.handle = getWindowHandle();
-        return this;
     }
 
     public Set<String> getHeadersBtnsName() {
@@ -96,14 +78,6 @@ public class Index extends BasePage {
 
     public WebElement getUserNameText() {
         return userNameText;
-    }
-
-    public Index login(String userName, String password) {
-        toggleButton.click();
-        inputUserName.sendKeys(userName);
-        inputPassword.sendKeys(password);
-        loginButton.click();
-        return this;
     }
 
     public DifferentElements goToDiffElemsPage() {

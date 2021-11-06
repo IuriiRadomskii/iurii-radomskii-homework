@@ -1,6 +1,7 @@
 package com.epam.tc.hw4.tests.ex2;
 
 import com.epam.tc.hw4.pages.DifferentElements;
+import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.tests.BaseTest;
 import com.epam.tc.hw4.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
@@ -12,14 +13,14 @@ public class ExerciseTwoTest extends BaseTest {
     public void exerciseTwoTest() {
 
         //1. Assert that page is opened and downloaded
-        indexPage.openPage(Expected.indexURL);
-        softly.assertThat(indexPage.getCurrentURL()).isEqualTo(Expected.indexURL);
+        loginPage.openPage(Expected.homePageURL);
+        softly.assertThat(loginPage.getCurrentURL()).isEqualTo(Expected.homePageURL);
 
         //2. Assert that page title is 'Home Page'
-        softly.assertThat(indexPage.getTitle()).isEqualTo(Expected.indexTitle);
+        softly.assertThat(loginPage.getTitle()).isEqualTo(Expected.homePageTitle);
 
         //3. Assert that user is logged by given username and password
-        indexPage.login(userName, password);
+        Index indexPage = loginPage.login(userName, password);
         softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
 
         //4. Assert that user name is displayed and equals to expected result

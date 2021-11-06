@@ -5,10 +5,10 @@ import java.util.Set;
 
 public class Expected {
 
-    public static final String indexURL = "https://jdi-testing.github.io/jdi-light/index.html";
+    public static final String homePageURL = "https://jdi-testing.github.io/jdi-light/index.html";
     public static final String differentElementsURL = "https://jdi-testing.github.io/jdi-light/different-elements.html";
     public static final String userNameAtPage = "ROMAN IOVLEV";
-    public static final String indexTitle = "Home Page";
+    public static final String homePageTitle = "Home Page";
     public static final String differentElementsPageTitle = "Different Elements";
     public static final Set<String> headersBtnsName = Set
         .of("HOME",
