@@ -1,11 +1,7 @@
 package com.epam.tc.hw4.tests.ex1;
 
-import com.epam.tc.hw4.pages.Frame;
-import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.tests.BaseTest;
-import com.epam.tc.hw4.tests.data.Expected;
 import com.epam.tc.hw4.tests.steps.ExerciseOneSteps;
-import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

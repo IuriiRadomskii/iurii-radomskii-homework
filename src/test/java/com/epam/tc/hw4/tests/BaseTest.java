@@ -14,9 +14,6 @@ import org.testng.annotations.BeforeClass;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected SoftAssertions softly;
-    protected Login loginPage;
-    protected Index indexPage;
     protected String userName;
     protected String password;
 
@@ -25,9 +22,7 @@ public class BaseTest {
         System.out.println("Before class");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        softly = new SoftAssertions();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        loginPage = new Login(driver);
         userName = PropertyInit.getProperty("username");
         password = PropertyInit.getProperty("password");
     }
