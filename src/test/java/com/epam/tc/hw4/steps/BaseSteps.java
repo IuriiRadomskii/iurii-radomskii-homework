@@ -1,8 +1,8 @@
-package com.epam.tc.hw4.tests.steps;
+package com.epam.tc.hw4.steps;
 
 import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
-import com.epam.tc.hw4.tests.data.Expected;
+import com.epam.tc.hw4.data.Expected;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;

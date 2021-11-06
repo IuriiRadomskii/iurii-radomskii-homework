@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.tests.data;
+package com.epam.tc.hw4.data;
 
 import java.util.List;
 import java.util.Set;

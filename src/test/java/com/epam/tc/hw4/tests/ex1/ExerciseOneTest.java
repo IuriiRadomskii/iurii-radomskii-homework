@@ -1,11 +1,14 @@
 package com.epam.tc.hw4.tests.ex1;
 
 import com.epam.tc.hw4.tests.BaseTest;
-import com.epam.tc.hw4.tests.data.Expected;
-import com.epam.tc.hw4.tests.data.PropertyInit;
-import com.epam.tc.hw4.tests.steps.ExerciseOneSteps;
+import com.epam.tc.hw4.data.Expected;
+import com.epam.tc.hw4.steps.ExerciseOneSteps;
+import io.qameta.allure.Feature;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+
+@Feature("Home Page functions")
 
 public class ExerciseOneTest extends BaseTest {
 
@@ -14,9 +17,6 @@ public class ExerciseOneTest extends BaseTest {
     @BeforeMethod
     private void setupExerciseOneSteps() {
         this.exOneSteps = new ExerciseOneSteps(driver);
-        userName = PropertyInit.getProperty("username");
-        password = PropertyInit.getProperty("password");
-
     }
 
     @Test

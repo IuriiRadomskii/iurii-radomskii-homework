@@ -1,8 +1,7 @@
-package com.epam.tc.hw4.tests.steps;
+package com.epam.tc.hw4.steps;
 
 import com.epam.tc.hw4.pages.DifferentElements;
 import com.epam.tc.hw4.pages.Login;
-import com.epam.tc.hw4.tests.data.Expected;
 import io.qameta.allure.Step;
 import java.util.List;
 import org.openqa.selenium.NoSuchSessionException;

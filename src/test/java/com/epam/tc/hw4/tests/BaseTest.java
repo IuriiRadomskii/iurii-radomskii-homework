@@ -1,5 +1,6 @@
 package com.epam.tc.hw4.tests;
 
+import com.epam.tc.hw4.data.PropertyInit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,11 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        userName = PropertyInit.getProperty("username");
+        password = PropertyInit.getProperty("password");
     }
+
+
 
     @AfterClass
     public void tearDown() {
