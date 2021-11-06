@@ -1,6 +1,6 @@
 package com.epam.tc.hw3.tests.ex2;
 
-import com.epam.tc.hw3.pages.DifferentElementsPage;
+import com.epam.tc.hw3.pages.DifferentElements;
 import com.epam.tc.hw3.tests.BaseTest;
 import com.epam.tc.hw3.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
@@ -26,7 +26,7 @@ public class ExerciseTwoTest extends BaseTest {
         softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(Expected.userNameAtPage);
 
         //5. Assert that Different Elements page is opened
-        DifferentElementsPage diffPage = indexPage.goToDiffElemsPage();
+        DifferentElements diffPage = indexPage.goToDiffElemsPage();
         softly.assertThat(diffPage.getTitle()).isEqualTo(Expected.differentElementsPageTitle);
 
         //6. Assert that Water and Wind checkboxes are selected

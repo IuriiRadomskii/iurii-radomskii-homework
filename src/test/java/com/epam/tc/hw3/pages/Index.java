@@ -1,7 +1,6 @@
 
 package com.epam.tc.hw3.pages;
 
-import com.epam.tc.hw3.tests.data.Expected;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -10,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class IndexPage extends BasePage {
+public class Index extends BasePage {
 
     @FindBy(xpath = "//a[@class='dropdown-toggle'][@href='#']")
     private WebElement toggleButton;
@@ -52,11 +51,11 @@ public class IndexPage extends BasePage {
         return iframe;
     }
 
-    public IndexPage(WebDriver driver) {
+    public Index(WebDriver driver) {
         super(driver);
     }
 
-    public IndexPage openPage(String url) {
+    public Index openPage(String url) {
         driver.navigate().to(url);
         driver.manage().window().maximize();
         this.handle = getWindowHandle();
@@ -103,7 +102,7 @@ public class IndexPage extends BasePage {
         return userNameText;
     }
 
-    public IndexPage login(String userName, String password) {
+    public Index login(String userName, String password) {
         toggleButton.click();
         inputUserName.sendKeys(userName);
         inputPassword.sendKeys(password);
@@ -111,10 +110,10 @@ public class IndexPage extends BasePage {
         return this;
     }
 
-    public DifferentElementsPage goToDiffElemsPage() {
+    public DifferentElements goToDiffElemsPage() {
         serviceBtn.click();
         differentElementsBtn.click();
-        return new DifferentElementsPage(driver);
+        return new DifferentElements(driver);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.epam.tc.hw3.tests.ex1;
 
 import com.epam.tc.hw3.pages.Frame;
-import com.epam.tc.hw3.pages.IndexPage;
+import com.epam.tc.hw3.pages.Index;
 import com.epam.tc.hw3.tests.BaseTest;
 import com.epam.tc.hw3.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
@@ -43,7 +43,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(frame.getFrameButton().isEnabled()).isTrue();
 
         //10. Assert that driver switched to original window
-        indexPage = (IndexPage) frame.switchBackTo();
+        indexPage = (Index) frame.switchBackTo();
         softly.assertThat(indexPage.getWindowHandle()).isEqualTo(indexPage.getHandle());
 
         //11. Assert that left sidebar menu has 5 items and they have proper names
