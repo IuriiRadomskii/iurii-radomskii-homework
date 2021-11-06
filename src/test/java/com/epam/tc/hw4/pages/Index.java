@@ -47,10 +47,6 @@ public class Index extends BasePage {
     @FindBy(xpath = "//ul[@class='sub']/li[@index=8]")
     private WebElement differentElementsBtn;
 
-    public WebElement getIframe() {
-        return iframe;
-    }
-
     public Index(WebDriver driver) {
         super(driver);
     }
@@ -116,4 +112,7 @@ public class Index extends BasePage {
         return new DifferentElements(driver);
     }
 
+    public WebElement getIframe() {
+        return iframe;
+    }
 }

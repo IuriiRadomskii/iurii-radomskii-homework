@@ -1,8 +1,8 @@
 package com.epam.tc.hw4.tests.ex2;
 
-import com.epam.tc.hw3.pages.DifferentElements;
-import com.epam.tc.hw3.tests.BaseTest;
-import com.epam.tc.hw3.tests.data.Expected;
+import com.epam.tc.hw4.pages.DifferentElements;
+import com.epam.tc.hw4.tests.BaseTest;
+import com.epam.tc.hw4.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
 import org.testng.annotations.Test;
 

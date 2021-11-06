@@ -1,7 +1,7 @@
 package com.epam.tc.hw4.tests;
 
-import com.epam.tc.hw3.pages.Index;
-import com.epam.tc.hw3.tests.data.PropertyInit;
+import com.epam.tc.hw4.pages.Index;
+import com.epam.tc.hw4.tests.data.PropertyInit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.assertj.core.api.SoftAssertions;

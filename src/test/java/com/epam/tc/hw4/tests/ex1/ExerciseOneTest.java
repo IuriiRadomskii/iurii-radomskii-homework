@@ -1,13 +1,19 @@
 package com.epam.tc.hw4.tests.ex1;
 
-import com.epam.tc.hw3.pages.Frame;
-import com.epam.tc.hw3.pages.Index;
-import com.epam.tc.hw3.tests.BaseTest;
-import com.epam.tc.hw3.tests.data.Expected;
+import com.epam.tc.hw4.pages.Frame;
+import com.epam.tc.hw4.pages.Index;
+import com.epam.tc.hw4.tests.BaseTest;
+import com.epam.tc.hw4.tests.data.Expected;
 import org.openqa.selenium.NoSuchSessionException;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends BaseTest {
+
+    @BeforeMethod
+    private void setupExerciseOneSteps() {
+
+    }
 
     @Test
     public void exerciseOneTest() {
