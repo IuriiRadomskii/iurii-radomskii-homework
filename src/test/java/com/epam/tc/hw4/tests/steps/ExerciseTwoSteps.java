@@ -1,7 +1,6 @@
 package com.epam.tc.hw4.tests.steps;
 
 import com.epam.tc.hw4.pages.DifferentElements;
-import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
 import com.epam.tc.hw4.tests.data.Expected;
 import io.qameta.allure.Step;
@@ -22,9 +21,66 @@ public class ExerciseTwoSteps extends BaseSteps {
         softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
     }
 
+    @Step("Go to Different Elements page")
+    public void goToDifferentElementPage() {
+        differentElements = indexPage.goToDiffElemsPage();
+    }
 
+    @Step("Assert that Different Elements page is opened")
+    public void assertDifferentElementsIsOpened() {
+        softly.assertThat(differentElements.getTitle()).isEqualTo(Expected.differentElementsPageTitle);
+    }
 
+    @Step("Click Water and Wind checkboxes")
+    public void clickWaterAndWindCheckBoxes() {
+        differentElements
+            .clickElement(differentElements.getWaterCheckBox())
+            .clickElement(differentElements.getWindCheckBox());
+    }
 
+    @Step("Assert that Water and Wind checkboxes are selected")
+    public void assertWaterAndWindCheckBoxesSelected() {
+        softly.assertThat(differentElements.getWaterCheckBox().isSelected()).isTrue();
+        softly.assertThat(differentElements.getWindCheckBox().isSelected()).isTrue();
+    }
+
+    @Step("Click Selen radiobox")
+    public void clickSelenRadioBox() {
+        differentElements.clickElement(differentElements.getSelenRadio());
+    }
+
+    @Step("Assert that Selen radiobox is selected")
+    public void assertSelenRadioBoxIsSelected() {
+        softly.assertThat(differentElements.getSelenRadio().isSelected()).isTrue();
+    }
+
+    @Step("Click Yellow option")
+    public void clickYellow() {
+        differentElements.clickElement(differentElements.getYellowOption());
+    }
+
+    @Step("Assert that Selen radiobox is selected")
+    public void assertYellow() {
+        softly.assertThat(differentElements.getSelenRadio().isSelected()).isTrue();
+    }
+
+    @Step("Refresh page")
+    public void refreshPage() {
+        differentElements.refresh();
+    }
+
+    @Step("Click all")
+    public void clickAll() {
+        differentElements
+            .clickInARow(differentElements.getCheckBoxRow())
+            .clickInARow(differentElements.getRadioBoxRow())
+            .clickInARow(differentElements.getColorOptions());
+    }
+
+    @Step("Assert logs")
+    public void assertLogs() {
+        softly.assertThat(differentElements.getActualLogs()).isEqualTo(Expected.logs);
+    }
 
     @Step("Close browser")
     public void closeBrowser() {
@@ -42,6 +98,4 @@ public class ExerciseTwoSteps extends BaseSteps {
     public void assertAll() {
         softly.assertAll();
     }
-}
-
 }

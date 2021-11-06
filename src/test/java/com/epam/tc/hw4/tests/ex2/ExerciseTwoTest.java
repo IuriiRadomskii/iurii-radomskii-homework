@@ -4,62 +4,42 @@ import com.epam.tc.hw4.pages.DifferentElements;
 import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.tests.BaseTest;
 import com.epam.tc.hw4.tests.data.Expected;
+import com.epam.tc.hw4.tests.steps.ExerciseOneSteps;
+import com.epam.tc.hw4.tests.steps.ExerciseTwoSteps;
 import org.openqa.selenium.NoSuchSessionException;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExerciseTwoTest extends BaseTest {
 
+    private ExerciseTwoSteps exTwoSteps;
+
+    @BeforeMethod
+    private void setupExerciseOneSteps() {
+        this.exTwoSteps = new ExerciseTwoSteps(driver);
+    }
+
     @Test
     public void exerciseTwoTest() {
 
-        //1. Assert that page is opened and downloaded
-        loginPage.openPage(Expected.homePageURL);
-        softly.assertThat(loginPage.getCurrentURL()).isEqualTo(Expected.homePageURL);
-
-        //2. Assert that page title is 'Home Page'
-        softly.assertThat(loginPage.getTitle()).isEqualTo(Expected.homePageTitle);
-
-        //3. Assert that user is logged by given username and password
-        Index indexPage = loginPage.login(userName, password);
-        softly.assertThat(indexPage.getUserNameText().isDisplayed()).isTrue();
-
-        //4. Assert that user name is displayed and equals to expected result
-        softly.assertThat(indexPage.getActualUserNameAtPage()).isEqualTo(Expected.userNameAtPage);
-
-        //5. Assert that Different Elements page is opened
-        DifferentElements diffPage = indexPage.goToDiffElemsPage();
-        softly.assertThat(diffPage.getTitle()).isEqualTo(Expected.differentElementsPageTitle);
-
-        //6. Assert that Water and Wind checkboxes are selected
-        diffPage
-            .clickElement(diffPage.getWaterCheckBox())
-            .clickElement(diffPage.getWindCheckBox());
-        softly.assertThat(diffPage.getWaterCheckBox().isSelected()).isTrue();
-        softly.assertThat(diffPage.getWindCheckBox().isSelected()).isTrue();
-
-        //7. Assert that 'Selen' radio is checked
-        diffPage.clickElement(diffPage.getSelenRadio());
-        softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
-
-        //8. Assert that yellow option in dropdown menu is selected
-        diffPage.clickElement(diffPage.getYellowOption());
-        softly.assertThat(diffPage.getSelenRadio().isSelected()).isTrue();
-
-        //9. Assert that there is a separate log entry for each checkbox, radio button, and color option
-        // corresponding to their status.
-        diffPage
-            .refresh()
-            .clickInARow(diffPage.getCheckBoxRow())
-            .clickInARow(diffPage.getRadioBoxRow())
-            .clickInARow(diffPage.getColorOptions());
-        softly.assertThat(diffPage.getActualLogs()).isEqualTo(Expected.logs);
-
-        //10. Assert that browser is closed
-        indexPage.close();
-        softly.assertThatThrownBy(() -> driver.getWindowHandle())
-              .isInstanceOf(NoSuchSessionException.class)
-              .hasMessageContaining("invalid session id");
-        softly.assertAll();
+        exTwoSteps.openPage();
+        exTwoSteps.assertLoginPageUrl();
+        exTwoSteps.assertLoginPageTitle();
+        exTwoSteps.login(userName, password);
+        exTwoSteps.goToDifferentElementPage();
+        exTwoSteps.assertDifferentElementsIsOpened();
+        exTwoSteps.clickWaterAndWindCheckBoxes();
+        exTwoSteps.clickSelenRadioBox();
+        exTwoSteps.clickYellow();
+        exTwoSteps.assertWaterAndWindCheckBoxesSelected();
+        exTwoSteps.assertSelenRadioBoxIsSelected();
+        exTwoSteps.assertYellow();
+        exTwoSteps.refreshPage();
+        exTwoSteps.clickAll();
+        exTwoSteps.assertLogs();
+        exTwoSteps.closeBrowser();
+        exTwoSteps.assertClosedBrowser();
+        exTwoSteps.assertAll();
 
     }
 }
