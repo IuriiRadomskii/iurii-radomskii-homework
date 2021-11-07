@@ -31,8 +31,6 @@ public class ExerciseTwoTest extends BaseTest {
         exTwoSteps.refreshPage();
         exTwoSteps.clickAll();
         exTwoSteps.assertLogs(Expected.logs);
-        exTwoSteps.closeBrowser();
-        exTwoSteps.assertClosedBrowser();
         exTwoSteps.assertAll();
 
     }

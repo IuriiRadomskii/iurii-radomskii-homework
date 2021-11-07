@@ -82,10 +82,6 @@ public class ExerciseTwoSteps extends BaseSteps {
         softly.assertThat(differentElements.getActualLogs()).isEqualTo(expectedLogs);
     }
 
-    @Step("Close browser")
-    public void closeBrowser() {
-        driver.close();
-    }
 
     @Step("Assert that browser is closed")
     public void assertClosedBrowser() {

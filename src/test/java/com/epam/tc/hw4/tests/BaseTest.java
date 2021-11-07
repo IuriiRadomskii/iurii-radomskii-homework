@@ -2,7 +2,7 @@ package com.epam.tc.hw4.tests;
 
 import com.epam.tc.hw3.tests.data.Expected;
 import com.epam.tc.hw4.data.PropertyInit;
-import com.epam.tc.hw4.utils.ExerciseOneListener;
+import com.epam.tc.hw4.utils.ScreenshotListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
-@Listeners(ExerciseOneListener.class)
+@Listeners(ScreenshotListener.class)
 public class BaseTest {
 
     protected WebDriver driver;
@@ -37,11 +36,12 @@ public class BaseTest {
     }
 
     @BeforeClass
-    public void setup(/*ITestContext context*/) {
+    public void setup(ITestContext context) {
         System.out.println("Before class");
         setupDriver();
         setupCredentials();
         setupInitialState();
+        context.setAttribute("driver", driver);
     }
 
     @AfterClass
@@ -53,8 +53,4 @@ public class BaseTest {
 
     }
 
-    @BeforeMethod
-    public void initTest(ITestContext context) {
-        context.setAttribute("driver", driver);
-    }
 }

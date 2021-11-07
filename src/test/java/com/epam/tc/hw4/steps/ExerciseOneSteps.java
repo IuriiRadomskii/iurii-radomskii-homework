@@ -68,11 +68,6 @@ public class ExerciseOneSteps extends BaseSteps {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
     }
 
-    @Step("Close browser")
-    public void closeBrowser() {
-        driver.close();
-    }
-
     @Step("Assert that browser is closed")
     public void assertClosedBrowser() {
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
