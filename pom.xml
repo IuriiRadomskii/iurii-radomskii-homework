@@ -55,22 +55,10 @@
         </profile>
 
         <profile>
-            <id>homework03-all-test</id>
+            <id>homework03-test</id>
             <activation><activeByDefault>true</activeByDefault></activation>
             <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/all-test-suite</suite.name.xml>
-            </properties>
-        </profile>
-        <profile>
-            <id>homework03-ex1-test</id>
-            <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/ex1-test-suite</suite.name.xml>
-            </properties>
-        </profile>
-        <profile>
-            <id>homework03-ex2-test</id>
-            <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/ex2-test-suite</suite.name.xml>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/homework03-test-suite</suite.name.xml>
             </properties>
         </profile>
     </profiles>
