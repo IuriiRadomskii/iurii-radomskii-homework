@@ -50,7 +50,7 @@ public class ExerciseOneTest extends BaseTest {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
 
         //12. Assert that browser is closed
-        driver.close();
+        driver.quit();
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
               .hasMessageContaining("invalid session id");

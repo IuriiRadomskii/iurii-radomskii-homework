@@ -18,10 +18,6 @@ public class BasePage {
         return this;
     }
 
-    public void close() {
-        driver.close();
-    }
-
     public String getTitle() {
         return driver.getTitle();
     }

@@ -33,6 +33,8 @@ public class BaseTest {
     @AfterClass
     public void tearDown() {
         System.out.println("After class");
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
