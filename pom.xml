@@ -22,7 +22,7 @@
         <slf4j.version>2.0.0-alpha5</slf4j.version>
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
 
-        <allure-testng.version>2.13.2</allure-testng.version>
+        <allure-testng.version>2.14.0</allure-testng.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
@@ -71,7 +71,7 @@
 
         <profile>
             <id>homework04-all-valid-test</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/all-valid-test-suite</suite.name.xml>
             </properties>
@@ -90,6 +90,7 @@
         </profile>
         <profile>
             <id>homework04-invalid-test</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
             </properties>

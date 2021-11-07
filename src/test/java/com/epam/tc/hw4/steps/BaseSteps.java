@@ -19,11 +19,6 @@ public class BaseSteps {
         softly = new SoftAssertions();
     }
 
-    @Step("Open browser and navigate to Index Page")
-    public void openPage() {
-        loginPage.openPage(Expected.homePageURL);
-    }
-
     @Step("Assert that Index Page is opened")
     public void assertLoginPageUrl(String expectedHomePageUrl) {
         softly.assertThat(loginPage.getCurrentURL()).isEqualTo(expectedHomePageUrl);

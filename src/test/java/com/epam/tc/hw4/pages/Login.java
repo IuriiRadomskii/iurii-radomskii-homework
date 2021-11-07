@@ -22,11 +22,6 @@ public class Login extends BasePage {
         super(driver);
     }
 
-    public void openPage(String url) {
-        driver.navigate().to(url);
-        driver.manage().window().maximize();
-    }
-
     public Index login(String userName, String password) {
         toggleButton.click();
         inputUserName.sendKeys(userName);
