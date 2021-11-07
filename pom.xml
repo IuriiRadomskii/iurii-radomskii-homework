@@ -73,19 +73,7 @@
             <id>homework04-all-valid-test</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/all-valid-test-suite</suite.name.xml>
-            </properties>
-        </profile>
-        <profile>
-            <id>homework04-ex1-test</id>
-            <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/ex1-test-suite</suite.name.xml>
-            </properties>
-        </profile>
-        <profile>
-            <id>homework04-ex2-test</id>
-            <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/ex2-test-suite</suite.name.xml>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/valid-test-suite</suite.name.xml>
             </properties>
         </profile>
         <profile>
