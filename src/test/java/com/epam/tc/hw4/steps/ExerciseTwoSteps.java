@@ -82,14 +82,6 @@ public class ExerciseTwoSteps extends BaseSteps {
         softly.assertThat(differentElements.getActualLogs()).isEqualTo(expectedLogs);
     }
 
-
-    @Step("Assert that browser is closed")
-    public void assertClosedBrowser() {
-        softly.assertThatThrownBy(() -> driver.getWindowHandle())
-              .isInstanceOf(NoSuchSessionException.class)
-              .hasMessageContaining("invalid session id");
-    }
-
     @Step("Assert all")
     public void assertAll() {
         softly.assertAll();

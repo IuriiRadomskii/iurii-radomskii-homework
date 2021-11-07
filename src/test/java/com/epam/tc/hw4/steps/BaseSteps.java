@@ -2,7 +2,6 @@ package com.epam.tc.hw4.steps;
 
 import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
-import com.epam.tc.hw4.data.Expected;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +17,7 @@ public class BaseSteps {
         this.driver = driver;
         softly = new SoftAssertions();
     }
+
 
     @Step("Assert that Index Page is opened")
     public void assertLoginPageUrl(String expectedHomePageUrl) {

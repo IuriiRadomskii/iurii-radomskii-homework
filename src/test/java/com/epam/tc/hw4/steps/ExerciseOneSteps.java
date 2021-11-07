@@ -1,9 +1,9 @@
 package com.epam.tc.hw4.steps;
 
+import com.epam.tc.hw4.data.Expected;
 import com.epam.tc.hw4.pages.Frame;
 import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
-import com.epam.tc.hw4.data.Expected;
 import io.qameta.allure.Step;
 import java.util.Set;
 import org.openqa.selenium.NoSuchSessionException;
@@ -66,13 +66,6 @@ public class ExerciseOneSteps extends BaseSteps {
     @Step("Assert that left sidebar menu has 5 items and they have proper names")
     public void assertLeftSideBar() {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
-    }
-
-    @Step("Assert that browser is closed")
-    public void assertClosedBrowser() {
-        softly.assertThatThrownBy(() -> driver.getWindowHandle())
-              .isInstanceOf(NoSuchSessionException.class)
-              .hasMessageContaining("invalid session id");
     }
 
     @Step("Assert all")

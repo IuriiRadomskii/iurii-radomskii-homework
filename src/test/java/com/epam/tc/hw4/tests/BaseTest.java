@@ -46,7 +46,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-        System.out.println("After class");
+        System.out.println("After class: Driver is " + driver);
         if (driver != null) {
             driver.quit();
         }
