@@ -70,10 +70,10 @@
         </profile>
 
         <profile>
-            <id>homework04-all-test</id>
+            <id>homework04-all-valid-test</id>
             <activation><activeByDefault>true</activeByDefault></activation>
             <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/all-test-suite</suite.name.xml>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/all-valid-test-suite</suite.name.xml>
             </properties>
         </profile>
         <profile>
@@ -88,7 +88,14 @@
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/ex2-test-suite</suite.name.xml>
             </properties>
         </profile>
+        <profile>
+            <id>homework04-invalid-test</id>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
+
 
     <dependencies>
 

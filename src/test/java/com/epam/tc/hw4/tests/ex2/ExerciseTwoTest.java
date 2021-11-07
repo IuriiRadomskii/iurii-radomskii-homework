@@ -1,8 +1,8 @@
 package com.epam.tc.hw4.tests.ex2;
 
-import com.epam.tc.hw4.tests.BaseTest;
 import com.epam.tc.hw4.data.Expected;
 import com.epam.tc.hw4.steps.ExerciseTwoSteps;
+import com.epam.tc.hw4.tests.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

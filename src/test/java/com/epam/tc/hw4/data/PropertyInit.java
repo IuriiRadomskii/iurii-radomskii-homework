@@ -10,7 +10,7 @@ public class PropertyInit {
         FileInputStream inputStream;
         Properties property = new Properties();
         try {
-            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw3/credentials.properties");
+            inputStream = new FileInputStream("src/test/java/com/epam/tc/hw4/credentials.properties");
             property.load(inputStream);
             return property.getProperty(propertyName);
         } catch (IOException e) {
