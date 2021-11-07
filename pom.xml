@@ -31,9 +31,9 @@
 
         <profile>
             <id>homework01-add-subtract-calculator-test</id>
-            <activation>
+            <!--<activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
             </properties>
@@ -48,7 +48,7 @@
 
         <profile>
             <id>homework02-test-suite</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw2/test_suits/AllHomework02TestSuite</suite.name.xml>
             </properties>
