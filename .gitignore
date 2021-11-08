@@ -3,5 +3,4 @@ target
 *.docx
 .idea
 etc.
-src/main/java/Draft.java
 .allure
