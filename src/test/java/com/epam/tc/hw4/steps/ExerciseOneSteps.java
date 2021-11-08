@@ -68,8 +68,5 @@ public class ExerciseOneSteps extends BaseSteps {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
     }
 
-    @Step("Assert all")
-    public void assertAll() {
-        softly.assertAll();
-    }
+
 }

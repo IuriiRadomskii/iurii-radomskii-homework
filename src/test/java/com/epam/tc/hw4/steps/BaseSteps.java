@@ -4,6 +4,7 @@ import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
 public class BaseSteps {
@@ -32,6 +33,11 @@ public class BaseSteps {
     @Step("Login. Username: {username}, password: {password}")
     public void login(String username, String password) {
         indexPage = loginPage.login(username, password);
+    }
+
+    @Step("Assert all")
+    public void assertAll() {
+        softly.assertAll();
     }
 
 }
