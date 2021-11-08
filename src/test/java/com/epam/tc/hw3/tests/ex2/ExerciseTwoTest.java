@@ -57,7 +57,7 @@ public class ExerciseTwoTest extends BaseTest {
         driver.quit();
         softly.assertThatThrownBy(() -> driver.getWindowHandle())
               .isInstanceOf(NoSuchSessionException.class)
-              .hasMessageContaining("invalid session id");
+              .hasMessageContaining("Session ID is null");
         softly.assertAll();
 
     }
