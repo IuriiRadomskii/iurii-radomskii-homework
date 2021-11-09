@@ -26,7 +26,8 @@
         <aspectj.version>1.9.7</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
 
-        <cucumber-testng.version>6.10.4</cucumber-testng.version>
+        <cucumber-testng.version>7.0.0</cucumber-testng.version>
+        <cucumber-java.version>7.0.0</cucumber-java.version>
     </properties>
 
     <profiles>
@@ -138,6 +139,12 @@
             <version>${cucumber-testng.version}</version>
             <scope>test</scope>
         </dependency><!-- cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+            <scope>test</scope>
+        </dependency><!-- cucumber-java -->
     </dependencies>
 
     <build>
