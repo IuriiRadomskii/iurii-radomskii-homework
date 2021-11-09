@@ -68,15 +68,15 @@
         </profile>
 
         <profile>
-            <id>homework04-valid-test</id>
+            <id>homework04-valid-tests</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/valid-test-suite</suite.name.xml>
             </properties>
         </profile>
         <profile>
-            <id>homework04-invalid-test</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <id>homework04-invalid-ex1-test</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
             </properties>
