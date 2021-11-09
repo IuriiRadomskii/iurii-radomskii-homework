@@ -4,7 +4,6 @@ import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
 import io.qameta.allure.Step;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
 public class BaseSteps {

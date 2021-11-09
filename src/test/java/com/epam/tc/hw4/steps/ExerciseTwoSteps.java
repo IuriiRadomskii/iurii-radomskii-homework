@@ -82,4 +82,8 @@ public class ExerciseTwoSteps extends BaseSteps {
         softly.assertThat(differentElements.getActualLogs()).isEqualTo(expectedLogs);
     }
 
+    @Step("Assert all")
+    public void assertAll() {
+        softly.assertAll();
+    }
 }

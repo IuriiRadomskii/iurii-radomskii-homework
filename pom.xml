@@ -38,9 +38,7 @@
 
         <profile>
             <id>homework01-add-subtract-calculator-test</id>
-            <!--<activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>-->
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
             </properties>
@@ -62,15 +60,15 @@
         </profile>
 
         <profile>
-            <id>homework03-test</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <id>homework03-all-test</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/homework03-test-suite</suite.name.xml>
             </properties>
         </profile>
 
         <profile>
-            <id>homework04-all-valid-test</id>
+            <id>homework04-valid-test</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/valid-test-suite</suite.name.xml>
@@ -137,29 +135,29 @@
 
     <build>
         <plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire.version}</version>
-        <configuration>
-            <suiteXmlFiles>
-                <suiteXmlFile>${suite.name.xml}</suiteXmlFile>
-            </suiteXmlFiles>
-            <testFailureIgnore>true</testFailureIgnore>
-            <argLine>
-                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-            </argLine>
-        </configuration>
-        <dependencies>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${aspectj.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-        </dependencies>
-    </plugin>
-</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.name.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
     </build>
 
     <reporting>

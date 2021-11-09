@@ -6,7 +6,6 @@ import com.epam.tc.hw4.pages.Index;
 import com.epam.tc.hw4.pages.Login;
 import io.qameta.allure.Step;
 import java.util.Set;
-import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 
 public class ExerciseOneSteps extends BaseSteps {
@@ -67,6 +66,5 @@ public class ExerciseOneSteps extends BaseSteps {
     public void assertLeftSideBar() {
         softly.assertThat(indexPage.getActualNavigationSidebarText()).isEqualTo(Expected.navigationSidebarText);
     }
-
 
 }
