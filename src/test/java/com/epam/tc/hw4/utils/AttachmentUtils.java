@@ -8,7 +8,4 @@ public class AttachmentUtils {
     public static byte[] attachFile(final String fileName, byte[] file) {
         return file;
     }
-
-
-
 }
