@@ -1,21 +1,18 @@
 package com.epam.tc.hw5.page;
 
+import com.epam.tc.hw5.page.component.BaseComponent;
+import com.epam.tc.hw5.page.component.HeaderComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
+public abstract class BasePage extends BaseComponent {
 
-    protected WebDriver driver;
     protected String handle;
+    protected HeaderComponent header;
 
     protected BasePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
-    public BasePage refresh() {
-        driver.navigate().refresh();
-        return this;
+        super(driver);
+        header = new HeaderComponent(driver);
     }
 
     public void close() {

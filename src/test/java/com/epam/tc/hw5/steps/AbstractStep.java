@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.cteps;
+package com.epam.tc.hw5.steps;
 
 import com.epam.tc.hw5.context.TestContext;
 import com.epam.tc.hw5.page.DifferentElementsPage;

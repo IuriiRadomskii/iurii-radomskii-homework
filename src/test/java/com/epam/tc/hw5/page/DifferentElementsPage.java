@@ -21,15 +21,6 @@ public class DifferentElementsPage extends BasePage {
     @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement yellowOption;
 
-    @FindBy(xpath = "//div[@class='checkbox-row'][1]//input")
-    private List<WebElement> checkBoxRow;
-
-    @FindBy(xpath = "//div[@class='checkbox-row'][2]//input")
-    private List<WebElement> radioBoxRow;
-
-    @FindBy(tagName = "option")
-    private List<WebElement> colorOptions;
-
     @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
     private List<WebElement> logs;
 
@@ -50,19 +41,6 @@ public class DifferentElementsPage extends BasePage {
         return this;
     }
 
-    @Override
-    public DifferentElementsPage refresh() {
-        driver.navigate().refresh();
-        return this;
-    }
-
-    public DifferentElementsPage clickInARow(List<WebElement> elementList) {
-        for (WebElement elem : elementList) {
-            elem.click();
-        }
-        return this;
-    }
-
     public WebElement getWaterCheckBox() {
         return waterCheckBox;
     }
@@ -78,17 +56,4 @@ public class DifferentElementsPage extends BasePage {
     public WebElement getYellowOption() {
         return yellowOption;
     }
-
-    public List<WebElement> getCheckBoxRow() {
-        return checkBoxRow;
-    }
-
-    public List<WebElement> getRadioBoxRow() {
-        return radioBoxRow;
-    }
-
-    public List<WebElement> getColorOptions() {
-        return colorOptions;
-    }
-
 }
