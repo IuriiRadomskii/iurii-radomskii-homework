@@ -25,4 +25,9 @@ public class IndexPageStep extends AbstractStep {
     public void clickDifferentElementsBtn() {
         indexPage.clickDifferentElementsBtn();
     }
+
+    @And("I click on \"User Table\" button in Service dropdown")
+    public void clickUserTableBtn() {
+        indexPage.clickUserTableBtn();
+    }
 }
