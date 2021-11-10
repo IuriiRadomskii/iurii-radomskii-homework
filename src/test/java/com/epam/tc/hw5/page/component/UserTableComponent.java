@@ -21,11 +21,26 @@ public class UserTableComponent extends BaseComponent {
     @FindBy(xpath = tableXpath + "input[@type='checkbox']")
     private List<WebElement> checkBoxes;
 
-    @FindBy(xpath = "//ul[@class='panel-body-list logs']/li")
-    private List<WebElement> logs;
-
     public UserTableComponent(WebDriver driver) {
         super(driver);
     }
+
+    public List<WebElement> getDropdownMenus() {
+        return dropdownMenus;
+    }
+
+    public List<WebElement> getUsernames() {
+        return usernames;
+    }
+
+    public List<WebElement> getDescriptions() {
+        return descriptions;
+    }
+
+    public List<WebElement> getCheckBoxes() {
+        return checkBoxes;
+    }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.epam.tc.hw5.page;
 
 import com.epam.tc.hw5.page.component.UserTableComponent;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 
 public class UserTablePage extends BasePage {
@@ -12,19 +13,19 @@ public class UserTablePage extends BasePage {
     }
 
     public int countDropDownNumber() {
-        return 0;
+        return table.getDropdownMenus().size();
     }
 
     public int countUserNamesNumber() {
-        return 0;
+        return table.getUsernames().size();
     }
 
     public int countDescriptionsNumber() {
-        return 0;
+        return table.getDescriptions().size();
     }
 
     public int countCheckboxesNumber() {
-        return 0;
+        return table.getCheckBoxes().size();
     }
 
 
