@@ -1,33 +1,41 @@
 package com.epam.tc.hw5.page;
 
-import com.epam.tc.hw5.page.component.AbstractComponent;
-import com.epam.tc.hw5.page.component.HeaderComponent;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
-public class BasePage extends AbstractComponent {
+public class BasePage {
 
-    private final String baseURL = "https://jdi-testing.github.io/jdi-light/";
-    protected HeaderComponent header;
+    protected WebDriver driver;
+    protected String handle;
 
     protected BasePage(WebDriver driver) {
-        super(driver);
-        header = new HeaderComponent(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public IndexPage login(String username, String password) {
-        return header.login(String username, String password);
+    public BasePage refresh() {
+        driver.navigate().refresh();
+        return this;
     }
 
-    public HeaderComponent clickServiceDropdownMenu() {
-        return header.clickServiceDropdownMenu();
+    public void close() {
+        driver.close();
     }
 
-    public DifferentElementsPage clickDifferentElementsInDropDownMenu() {
-        return header.clickDifferentElementsInDropDownMenu();
+    public String getTitle() {
+        return driver.getTitle();
     }
 
-    protected void open(String url) {
-        driver.navigate().to(baseURL + url);
+    public String getCurrentURL() {
+        return driver.getCurrentUrl();
+    }
+
+    public String getWindowHandle() {
+        return driver.getWindowHandle();
+    }
+
+    public String getHandle() {
+        return handle;
     }
 
 }
