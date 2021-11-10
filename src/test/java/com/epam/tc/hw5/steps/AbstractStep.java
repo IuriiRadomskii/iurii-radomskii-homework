@@ -18,5 +18,4 @@ public abstract class AbstractStep {
         differentElementsPage = new DifferentElementsPage(driver);
         userTablePage = new UserTablePage(driver);
     }
-
 }

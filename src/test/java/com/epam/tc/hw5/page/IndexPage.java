@@ -34,10 +34,21 @@ public class IndexPage extends BasePage {
             .clickLoginBtn();
     }
 
-    public void goThroughHeaderToDifferentElements() {
+    public void clickServiceToggle() {
         header
-            .clickServiceToggle()
+            .clickServiceToggle();
+    }
+
+
+    public void clickDifferentElementsBtn() {
+        header
             .clickDifferentElementsBtn();
     }
+
+    public void clickUserTableBtn() {
+        header
+            .clickUserTableBtn();
+    }
+
 
 }
