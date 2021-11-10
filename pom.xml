@@ -11,13 +11,20 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <selenium.version>4.0.0</selenium.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <testng.version>7.4.0</testng.version>
         <assertj.version>3.20.2</assertj.version>
-        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
-        <slf4j.version>2.0.0-alpha5</slf4j.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <selenium.version>4.0.0</selenium.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+
+        <slf4j.version>2.0.0-alpha5</slf4j.version>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
+
+        <allure-testng.version>2.14.0</allure-testng.version>
+        <aspectj.version>1.9.7</aspectj.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <profiles>
@@ -31,9 +38,7 @@
 
         <profile>
             <id>homework01-add-subtract-calculator-test</id>
-            <!--<activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>-->
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw1.test_suits/AddSubtractCalculatorTestSuite</suite.name.xml>
             </properties>
@@ -55,70 +60,119 @@
         </profile>
 
         <profile>
-            <id>homework03-test</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <id>homework03-all-test</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw3.test_suits/homework03-test-suite</suite.name.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>homework04-valid-tests</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/valid-test-suite</suite.name.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework04-invalid-ex1-test</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
+
         <dependency>
             <groupId>com.epam.tc.hw1.calculator</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/com.epam.tc.hw1.calculator/calculator-1.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-            <scope>test</scope>
-        </dependency>
+        </dependency> <!-- calculator -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency> <!-- testng -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency> <!-- assertj -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency> <!-- selenium -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>test</scope>
+        </dependency> <!-- webdrivermanager -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
+        </dependency> <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
+        </dependency> <!-- slf4j -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency> <!-- allure-testng -->
 
     </dependencies>
 
-<build>
-<plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire.version}</version>
-        <configuration>
-            <suiteXmlFiles>${suite.name.xml}</suiteXmlFiles>
-        </configuration>
-    </plugin>
-</plugins>
-</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.name.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-testng.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
 
