@@ -1,6 +1,5 @@
 Feature: Different Elements page functionality
-
-  Scenario: Login as user "Roman Iovlev"
+  Scenario: Logs test
     Given I open JDI GitHub site
     And I login as user "Roman Iovlev"
     When I click on "Service" button in Header

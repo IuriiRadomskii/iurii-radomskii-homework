@@ -1,5 +1,6 @@
 package com.epam.tc.hw5.page;
 
+import com.epam.tc.hw5.page.component.LogsComponent;
 import com.epam.tc.hw5.page.component.UserTableComponent;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
