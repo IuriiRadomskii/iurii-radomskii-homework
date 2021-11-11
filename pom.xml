@@ -84,6 +84,13 @@
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
             </properties>
         </profile>
+        <profile>
+            <id>homework05-cucumber-test</id>
+            <!--<activation><activeByDefault>true</activeByDefault></activation>-->
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw5/test_suits/homework05-cucumber-test-suit</suite.name.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>

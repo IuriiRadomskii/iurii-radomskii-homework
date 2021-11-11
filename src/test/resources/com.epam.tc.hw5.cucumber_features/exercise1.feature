@@ -1,5 +1,5 @@
 Feature: Different Elements page functionality
-  Scenario: Logs test
+  Scenario: Checkboxes, radio buttons and options logs test
     Given I open JDI GitHub site
     And I login as user "Roman Iovlev"
     When I click on "Service" button in Header

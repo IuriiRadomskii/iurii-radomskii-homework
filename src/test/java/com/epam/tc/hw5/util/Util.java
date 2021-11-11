@@ -14,7 +14,7 @@ public class Util {
         return res;
     }
 
-    public static List<List<String>> removeTableHeaderFrom(List<List<String>> table) {
+    public static <T> List<T> removeTableHeaderFrom(List<T> table) {
         return table.stream().skip(1).collect(Collectors.toList());
     }
 }

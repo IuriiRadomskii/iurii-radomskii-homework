@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserTableStep extends AbstractStep {
 
@@ -56,13 +57,12 @@ public class UserTableStep extends AbstractStep {
     }
 
     @And("droplist should contain values in column Type for user Roman")
-    public void assertDropDownMenusTexts(DataTable table) {
-        List<List<String>> rows = table.asLists(String.class);
+    public void assertDropDownMenusTexts(List<String> rows) {
         rows = Util.removeTableHeaderFrom(rows);
         for (int i = 0; i < rows.size(); i++) {
             softly.assertThat(userTablePage
                 .getTablesDropdownMenusTexts().get(i))
-                  .isEqualTo(rows.get(i).get(0));
+                  .isEqualTo(rows.get(i));
         }
         softly.assertAll();
     }
@@ -72,10 +72,15 @@ public class UserTableStep extends AbstractStep {
         userTablePage.clickVipCheckBox();
     }
 
-    @When("{int} log row has \"{Vip: condition changed to true}\" text in log section")
+    @When("{int} log row has \"Vip: condition changed to true\" text in log section")
     public void assertLogs(int num) {
+        String expectedLog = "Vip: condition changed to true";
         List<String> actualLogs = userTablePage.getActualLogs();
-
+        List<String> tmp = actualLogs.stream()
+                                     .filter(s -> s.equals(expectedLog))
+                                     .collect(Collectors.toList());
+        softly.assertThat(tmp.size()).isEqualTo(num);
+        softly.assertAll();
     }
 }
 

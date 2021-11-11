@@ -1,5 +1,5 @@
 Feature: User Table page functionality
-  Scenario:Logs test
+  Scenario:VIP checkbox logs test
     Given I open JDI GitHub site
     And I login as user "Roman Iovlev"
     And I click on "Service" button in Header
