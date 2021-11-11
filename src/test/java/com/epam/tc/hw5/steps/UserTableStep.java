@@ -1,11 +1,11 @@
 package com.epam.tc.hw5.steps;
 
 import com.epam.tc.hw5.data.Expected;
+import com.epam.tc.hw5.util.Util;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 
 public class UserTableStep extends AbstractStep {
 
@@ -43,12 +43,27 @@ public class UserTableStep extends AbstractStep {
       | 6      | Giovanni Rovelli | Hulksome description             |*/
 
     @And("User table should contain following values:")
-    public void checkValuesInTable(DataTable table) {
-
+    public void assertValuesInTable(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
-
+        rows = Util.removeTableHeaderFrom(rows);
+        for (int i = 0; i < rows.size(); i++) {
+            List<String> expectedRow = Util.collectRow(i + 1,
+                userTablePage.getTablesUsernamesTexts(),
+                userTablePage.getTablesDescriptionsTexts());
+            softly.assertThat(expectedRow).isEqualTo(rows.get(i));
+        }
     }
 
-
+    @And("droplist should contain values in column Type for user Roman")
+    public void assertDropDownMenusTexts(DataTable table) {
+        List<List<String>> rows = table.asLists(String.class);
+        rows = Util.removeTableHeaderFrom(rows);
+        for (int i = 0; i < rows.size(); i++) {
+            softly.assertThat(userTablePage
+                .getTablesDropdownMenusTexts().get(i))
+                  .isEqualTo(rows.get(i).get(0));
+        }
+        softly.assertAll();
+    }
 }
 

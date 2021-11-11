@@ -10,6 +10,7 @@ public class UserTablePage extends BasePage {
 
     public UserTablePage(WebDriver driver) {
         super(driver);
+        table = new UserTableComponent(driver);
     }
 
     public int countDropDownNumber() {
@@ -28,6 +29,17 @@ public class UserTablePage extends BasePage {
         return table.getCheckBoxes().size();
     }
 
+    public List<String> getTablesDropdownMenusTexts() {
+        return table.getDropDownMenuTexts();
+    }
+
+    public List<String> getTablesUsernamesTexts() {
+        return table.getUsernamesTexts();
+    }
+
+    public List<String> getTablesDescriptionsTexts() {
+        return table.getDescriptionsTexts();
+    }
 
 
 }
