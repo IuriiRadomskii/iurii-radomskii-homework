@@ -5,7 +5,6 @@ import com.epam.tc.hw5.page.component.HeaderComponent;
 import com.epam.tc.hw5.page.component.LogsComponent;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage extends BaseComponent {
 

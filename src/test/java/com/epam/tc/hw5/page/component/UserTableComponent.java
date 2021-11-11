@@ -26,6 +26,9 @@ public class UserTableComponent extends BaseComponent {
     @FindBy(xpath = tableXpath + "tr[1]//select/option")
     private List<WebElement> userRomanDropDownMenuElements;
 
+    @FindBy(xpath = tableXpath + "tbody/tr[2]/td[4]//input")
+    private WebElement vipCheckBox;
+
     public UserTableComponent(WebDriver driver) {
         super(driver);
     }
@@ -67,6 +70,7 @@ public class UserTableComponent extends BaseComponent {
         return checkBoxes;
     }
 
-
-
+    public WebElement getVipCheckBox() {
+        return vipCheckBox;
+    }
 }

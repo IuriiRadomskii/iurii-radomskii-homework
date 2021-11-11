@@ -5,12 +5,13 @@ import com.epam.tc.hw5.util.Util;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import java.util.List;
 
 public class UserTableStep extends AbstractStep {
 
     @Then("\"User Table\" page should be opened")
-    public void assertLogs() {
+    public void assertTitle() {
         softly.assertThat(userTablePage.getTitle()).isEqualTo(Expected.userTablePageTitle);
     }
 
@@ -64,6 +65,17 @@ public class UserTableStep extends AbstractStep {
                   .isEqualTo(rows.get(i).get(0));
         }
         softly.assertAll();
+    }
+
+    @When("I select 'vip' checkbox for \"Sergey Ivan\"")
+    public void clickVipCheckbox() {
+        userTablePage.clickVipCheckBox();
+    }
+
+    @When("{int} log row has \"{Vip: condition changed to true}\" text in log section")
+    public void assertLogs(int num) {
+        List<String> actualLogs = userTablePage.getActualLogs();
+
     }
 }
 
