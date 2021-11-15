@@ -2,6 +2,8 @@ package com.epam.tc.hw6.tests;
 
 import com.epam.tc.hw3.tests.data.Expected;
 import com.epam.tc.hw6.data.PropertyInit;
+import com.epam.tc.hw6.service.DriverFactory;
+import com.epam.tc.hw6.service.DriverProvider;
 import com.epam.tc.hw6.utils.ScreenshotListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +23,7 @@ public class BaseTest {
 
     private void setupDriver() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = DriverProvider.getWebDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
