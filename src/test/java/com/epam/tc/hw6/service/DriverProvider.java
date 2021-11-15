@@ -13,7 +13,7 @@ public class DriverProvider {
         if (Objects.isNull(driver)) {
             String launchType = System.getProperty("launch.type", "local");
             String browserType = System.getProperty("browser.type", "chrome");
-            driver = DriverFactory.getDriver(LaunchType.valueOf(launchType.toUpperCase()),
+            driver = DriverFactory.createDriver(LaunchType.valueOf(launchType.toUpperCase()),
                 BrowserType.valueOf(browserType.toUpperCase()));
         }
         return driver;

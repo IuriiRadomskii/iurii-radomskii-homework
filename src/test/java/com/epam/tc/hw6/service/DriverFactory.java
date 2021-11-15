@@ -15,12 +15,11 @@ public class DriverFactory {
 
     private static final String LOCAL_LAUNCH = "LOCAL";
     private static final String REMOTE_LAUNCH = "REMOTE";
+    private static final String HUB_URL = System.getProperty("grid.hub.url");
 
-    private DriverFactory() {
+    private DriverFactory() {}
 
-    }
-
-    public static WebDriver getDriver(LaunchType launchType, BrowserType browser) {
+    public static WebDriver createDriver(LaunchType launchType, BrowserType browser) {
         WebDriver driver;
         if (launchType.toString().equalsIgnoreCase(LOCAL_LAUNCH)) {
             driver = getLocalDriver(browser);
@@ -63,7 +62,7 @@ public class DriverFactory {
                 throw new IllegalArgumentException("Invalid remote driver");
         }
         try {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+            driver = new RemoteWebDriver(new URL(HUB_URL), capabilities);
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Invalid hub URL");
         }
