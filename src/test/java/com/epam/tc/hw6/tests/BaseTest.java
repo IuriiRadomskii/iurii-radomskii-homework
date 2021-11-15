@@ -2,13 +2,10 @@ package com.epam.tc.hw6.tests;
 
 import com.epam.tc.hw3.tests.data.Expected;
 import com.epam.tc.hw6.data.PropertyInit;
-import com.epam.tc.hw6.service.DriverFactory;
 import com.epam.tc.hw6.service.DriverProvider;
 import com.epam.tc.hw6.utils.ScreenshotListener;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +19,6 @@ public class BaseTest {
     protected String password;
 
     private void setupDriver() {
-        WebDriverManager.chromedriver().setup();
         driver = DriverProvider.getWebDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
@@ -48,8 +44,6 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        DriverProvider.closeDriver();
     }
 }
