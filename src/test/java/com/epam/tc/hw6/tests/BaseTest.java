@@ -36,14 +36,16 @@ public class BaseTest {
     @BeforeClass
     public void setup(ITestContext context) {
         System.out.println("Before class");
-        setupDriver();
         setupCredentials();
-        setupInitialState();
+        driver = DriverProvider.getWebDriver();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.navigate().to(Expected.indexURL);
+        driver.manage().window().maximize();
         context.setAttribute("driver", driver);
     }
 
     @AfterClass
     public void tearDown() {
-        DriverProvider.closeDriver();
+        DriverProvider.closeWebDriver();
     }
 }
