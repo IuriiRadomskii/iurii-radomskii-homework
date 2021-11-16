@@ -55,7 +55,7 @@
         </profile>
 
         <profile>
-            <id>homework02-test-suite</id>
+            <id>homework02</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/java/com/epam/tc/hw2/test_suits/AllHomework02TestSuite</suite.name.xml>
@@ -74,21 +74,28 @@
             <id>homework04-valid-tests</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/valid-test-suite</suite.name.xml>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/homework04-valid-test-suite</suite.name.xml>
             </properties>
         </profile>
         <profile>
             <id>homework04-invalid-ex1-test</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
-                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/invalid-test-suite</suite.name.xml>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw4/test_suits/homework04-invalid-test-suite</suite.name.xml>
             </properties>
         </profile>
         <profile>
-            <id>homework05-cucumber-test</id>
+            <id>homework05</id>
             <!--<activation><activeByDefault>true</activeByDefault></activation>-->
             <properties>
                 <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw5/test_suits/homework05-cucumber-test-suit</suite.name.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>homework06</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
+            <properties>
+                <suite.name.xml>${project.basedir}/src/test/resources/com.epam.tc.hw6.test_suits/homework06-valid-test-suite</suite.name.xml>
             </properties>
         </profile>
     </profiles>
