@@ -27,7 +27,7 @@ public class DriverFactory {
         } else if (launchType.toString().equalsIgnoreCase(REMOTE_LAUNCH)) {
             driver = getRemoteDriver(browser);
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid launch type");
         }
         return driver;
     }
