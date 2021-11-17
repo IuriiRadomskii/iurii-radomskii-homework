@@ -1,8 +1,8 @@
-package com.epam.jdi.enteties;
+package com.epam.tc.hw7.entities;
 
 public class User {
 
-    public final User romanIovlev = new User("Roman", "Jdi1234", "Roman Iovlev");
+    public static User DEFAULT_USER = new User("Roman", "Jdi1234", "Roman Iovlev");
 
     private String name;
     private String password;

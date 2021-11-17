@@ -28,6 +28,9 @@
 
         <cucumber-testng.version>7.0.0</cucumber-testng.version>
         <cucumber-java.version>7.0.0</cucumber-java.version>
+
+        <driver>chrome</driver>
+        <domain>https://jdi-testing.github.io/jdi-light/</domain>
     </properties>
 
     <profiles>
