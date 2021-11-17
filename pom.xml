@@ -159,6 +159,12 @@
             <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency><!-- cucumber-java -->
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>RELEASE</version>
+        </dependency><!--JDI-->
     </dependencies>
 
     <build>
@@ -186,6 +192,15 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
     <reporting>
