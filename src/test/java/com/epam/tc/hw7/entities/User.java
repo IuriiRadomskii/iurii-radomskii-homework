@@ -1,6 +1,8 @@
 package com.epam.tc.hw7.entities;
 
-public class User {
+import com.jdiai.tools.DataClass;
+
+public class User extends DataClass<User> {
 
     public static User DEFAULT_USER = new User("Roman", "Jdi1234", "Roman Iovlev");
 

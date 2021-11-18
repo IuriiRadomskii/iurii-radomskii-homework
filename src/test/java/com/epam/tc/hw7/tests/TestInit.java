@@ -4,18 +4,18 @@ import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
 import static com.epam.jdi.light.elements.init.PageFactory.initElements;
 
 import com.epam.tc.hw7.site.JdiSite;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-public class BaseTest {
+public interface TestInit {
 
-    @BeforeSuite(alwaysRun = true)
-    public static void setUp() {
+    @BeforeClass(alwaysRun = true)
+    default void setUp() {
         initElements(JdiSite.class);
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void tearDown() {
+    @AfterClass(alwaysRun = true)
+    default void tearDown() {
         killAllSeleniumDrivers();
     }
 
