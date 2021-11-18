@@ -1,7 +1,8 @@
 package com.epam.tc.hw7.site.pages;
 
 import com.epam.jdi.light.elements.composite.WebPage;
-import com.epam.tc.hw7.site.components.Header;
+import com.epam.tc.hw7.data.HeaderNavigationButton;
+import com.epam.tc.hw7.site.components.global.Header;
 
 public class BasePage extends WebPage {
 
@@ -13,6 +14,10 @@ public class BasePage extends WebPage {
 
     public String getFullUserName() {
         return header.fullName.getText();
+    }
+
+    public void selectInHeader(HeaderNavigationButton value) {
+        header.select(value);
     }
 
 

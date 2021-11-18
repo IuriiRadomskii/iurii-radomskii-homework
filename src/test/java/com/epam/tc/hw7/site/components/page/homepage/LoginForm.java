@@ -1,4 +1,4 @@
-package com.epam.tc.hw7.site.forms;
+package com.epam.tc.hw7.site.components.page.homepage;
 
 import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
