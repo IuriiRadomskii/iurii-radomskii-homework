@@ -4,6 +4,15 @@ import com.jdiai.tools.DataClass;
 
 public class MetalsAndColorsInfo extends DataClass<MetalsAndColorsInfo> {
 
+    public static int[] summaryData = {1, 2};
+    public static String[] elementsData = {"Water", "Fire"};
+    public static String colorData = "Red";
+    public static String metalsData = "Gold";
+    public static String[] vegetablesData = {"Cucumber"};
+
+    public static final MetalsAndColorsInfo TEST_DATA = new MetalsAndColorsInfo(summaryData,
+        elementsData, colorData, metalsData, vegetablesData);
+
     int[] summary;
     String[] elements;
     String colors;

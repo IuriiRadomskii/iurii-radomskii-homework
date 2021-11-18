@@ -1,4 +1,4 @@
-package com.epam.tc.hw7.site.components.global;
+package com.epam.tc.hw7.site.components;
 
 import com.epam.jdi.light.elements.complex.Menu;
 import com.epam.jdi.light.elements.composite.Section;

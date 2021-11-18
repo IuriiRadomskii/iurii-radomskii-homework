@@ -2,7 +2,7 @@ package com.epam.tc.hw7.site.pages;
 
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.tc.hw7.data.HeaderNavigationButton;
-import com.epam.tc.hw7.site.components.global.Header;
+import com.epam.tc.hw7.site.components.Header;
 
 public class BasePage extends WebPage {
 
