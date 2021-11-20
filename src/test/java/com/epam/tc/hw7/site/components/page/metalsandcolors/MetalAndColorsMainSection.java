@@ -1,6 +1,7 @@
 package com.epam.tc.hw7.site.components.page.metalsandcolors;
 
 import com.epam.jdi.light.elements.complex.Checklist;
+import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Section;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
@@ -10,13 +11,15 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 import com.epam.tc.hw7.entities.MetalsAndColorsInfo;
+import java.util.List;
+import org.openqa.selenium.WebElement;
 
 @Css(".form")
 public class MetalAndColorsMainSection extends Section {
 
     @FindBy(xpath = "//p[@class='radio']") public RadioButtons summary;
 
-    @UI("p.checkbox") public Checklist elements;
+    @Css("p.checkbox > label") public List<WebElement> elements;
 
     @UI("#submit-button") public Button submit;
 
@@ -42,9 +45,15 @@ public class MetalAndColorsMainSection extends Section {
         summary.select(radioToClick);
     }
 
+
     private void fillElements(String[] elementsToClick) {
-        elements.checkAll();
-        //TODO
+        for (byte i = 0; i < elements.size(); i++) {
+            for (byte j = 0; j < elementsToClick.length; j++) {
+                if (elements.get(i).getText().equalsIgnoreCase(elementsToClick[j])) {
+                    elements.get(i).click();
+                }
+            }
+        }
     }
 
     private void fillColors(String color) {
