@@ -15,5 +15,9 @@ public class MetalsAndColorsPage extends BasePage {
         metalAndColorsMainSection.fill(data);
     }
 
+    public void submit() {
+        metalAndColorsMainSection.submit();
+    }
+
 
 }

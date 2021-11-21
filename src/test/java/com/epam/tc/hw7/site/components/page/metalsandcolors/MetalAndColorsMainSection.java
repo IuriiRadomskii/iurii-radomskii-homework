@@ -1,15 +1,13 @@
 package com.epam.tc.hw7.site.components.page.metalsandcolors;
 
-import com.epam.jdi.light.elements.complex.Checklist;
+
 import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Section;
-import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 import com.epam.tc.hw7.entities.MetalsAndColorsInfo;
 import java.util.List;
 import org.openqa.selenium.WebElement;
@@ -17,9 +15,9 @@ import org.openqa.selenium.WebElement;
 @Css(".form")
 public class MetalAndColorsMainSection extends Section {
 
-    @FindBy(xpath = "//p[@class='radio']") public RadioButtons summary;
+    public Summary summary;
 
-    @Css("p.checkbox > label") public List<WebElement> elements;
+    @Css(".vertical-group .checkbox") public List<WebElement> elements;
 
     @UI("#submit-button") public Button submit;
 
@@ -33,39 +31,45 @@ public class MetalAndColorsMainSection extends Section {
                expand = ".caret", list = "label")
     public Dropdown vegetables;
 
-    public void fill(MetalsAndColorsInfo data) {
-        fillElements(data.getElements());
-        fillColors(data.getColors());
-        fillMetals(data.getMetals());
-        fillVegetables(data.getVegetables());
-        fillSummary(data.getSummary());
+    public void submit() {
+        submit.click();
     }
 
-    private void fillSummary(int[] radioToClick) {
+    public void fill(MetalsAndColorsInfo data) {
+        selectVegetables(data.getVegetables());
+        selectSummary(data.getSummary());
+        selectElements(data.getElements());
+        selectColors(data.getColors());
+        selectMetals(data.getMetals());
+    }
+
+    private void selectVegetables(String[] vegetable) {
+        vegetables.expand();
+        vegetables.select("Vegetables");
+        vegetables.select(vegetable);
+
+    }
+
+    private void selectSummary(int[] radioToClick) {
         summary.select(radioToClick);
     }
 
-
-    private void fillElements(String[] elementsToClick) {
-        for (byte i = 0; i < elements.size(); i++) {
+    private void selectElements(String[] elementsToClick) {
+        for (WebElement element : elements) {
             for (byte j = 0; j < elementsToClick.length; j++) {
-                if (elements.get(i).getText().equalsIgnoreCase(elementsToClick[j])) {
-                    elements.get(i).click();
+                if (element.getText().equalsIgnoreCase(elementsToClick[j])) {
+                    element.click();
                 }
             }
         }
     }
 
-    private void fillColors(String color) {
+    private void selectColors(String color) {
         colors.select(color);
     }
 
-    private void fillMetals(String metal) {
+    private void selectMetals(String metal) {
         metals.select(metal);
-    }
-
-    private void fillVegetables(String[] vegetable) {
-        vegetables.select(vegetable);
     }
 
 }

@@ -8,18 +8,16 @@ import static com.epam.tc.hw7.site.components.Header.userIcon;
 
 import com.epam.tc.hw7.data.HeaderNavigationButton;
 import com.epam.tc.hw7.entities.MetalsAndColorsInfo;
-import com.epam.tc.hw7.site.pages.HomePage;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 
 
 public class MetalsAndColorsTest implements TestInit {
 
-    @AfterMethod
+    /*@AfterMethod
     public void logout() {
         HomePage.logout();
-    }
+    }*/
 
     @Test
     public void loginTest() {
@@ -30,10 +28,6 @@ public class MetalsAndColorsTest implements TestInit {
         homePage.selectInHeader(HeaderNavigationButton.METALS_AND_COLORS);
         metalsAndColorsPage.shouldBeOpened();
         metalsAndColorsPage.fillData(MetalsAndColorsInfo.TEST_DATA);
-
+        metalsAndColorsPage.submit();
     }
-
-
-
-
 }
