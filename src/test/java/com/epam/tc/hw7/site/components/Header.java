@@ -8,7 +8,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
 import com.epam.jdi.light.ui.html.elements.common.Text;
 import com.epam.tc.hw7.data.HeaderNavigationButton;
-import com.epam.tc.hw7.site.components.page.homepage.LoginForm;
+import com.epam.tc.hw7.site.components.pages.home.LoginForm;
 import org.openqa.selenium.WebElement;
 
 @FindBy(className = "uui-header dark-gray")

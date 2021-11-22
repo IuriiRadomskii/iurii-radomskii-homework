@@ -1,4 +1,4 @@
-package com.epam.tc.hw7.site.components.page.metalsandcolors;
+package com.epam.tc.hw7.site.components.pages.metalsandcolors;
 
 
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;

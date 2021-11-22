@@ -1,11 +1,10 @@
 package com.epam.tc.hw7.site.pages;
 
-import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
-import com.epam.tc.hw7.site.components.page.metalsandcolors.MetalAndColorsMainSection;
+import com.epam.tc.hw7.site.components.pages.metalsandcolors.MetalAndColorsMainSection;
 import com.epam.tc.hw7.tests.utility.Info;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -39,6 +39,5 @@ public class MetalsAndColorsTest implements TestInit {
         metalsAndColorsPage.submit();
         Assertions.assertThat(info.getExpectedLogs()).isEqualTo(metalsAndColorsPage.getActualLogs());
         metalsAndColorsPage.refreshPage();
-
     }
 }
