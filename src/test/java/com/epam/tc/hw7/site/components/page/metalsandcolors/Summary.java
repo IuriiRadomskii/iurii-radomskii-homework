@@ -20,17 +20,17 @@ public class Summary extends Section {
     @FindBy(id = "calculate-button")
     private Button calculateBtn;
 
-    public void select(int[] toSelect) {
-        for (int number : toSelect) {
-            String stringNumber = String.valueOf(number);
+    public void select(List<String> toSelect) {
+        for (String number : toSelect) {
+            int intNumber = Integer.parseInt(number);
             Optional<WebElement> option;
-            if (number % 2 == 0) {
+            if (intNumber % 2 == 0) {
                 option = even.stream()
-                             .filter(element -> element.getText().equals(stringNumber))
+                             .filter(element -> element.getText().equals(number))
                              .findFirst();
             } else {
                 option = odd.stream()
-                            .filter(element -> element.getText().equals(stringNumber))
+                            .filter(element -> element.getText().equals(number))
                             .findFirst();
             }
             if (option.isPresent()) {

@@ -20,5 +20,11 @@ public class BasePage extends WebPage {
         header.select(value);
     }
 
+    public void refreshPage() {
+        driver().navigate().refresh();
+    }
+
+
+
 
 }

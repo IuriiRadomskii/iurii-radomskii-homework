@@ -31,6 +31,8 @@
 
         <driver>chrome</driver>
         <domain>https://jdi-testing.github.io/jdi-light/</domain>
+
+        <jackson.version>2.12.4</jackson.version>
     </properties>
 
     <profiles>
@@ -168,6 +170,13 @@
             <artifactId>jdi-light-html</artifactId>
             <version>RELEASE</version>
         </dependency><!--JDI-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency><!--jackson-->
+
+
     </dependencies>
 
     <build>

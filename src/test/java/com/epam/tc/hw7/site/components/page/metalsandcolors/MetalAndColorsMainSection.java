@@ -1,14 +1,13 @@
 package com.epam.tc.hw7.site.components.page.metalsandcolors;
 
 
-import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Section;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import com.epam.tc.hw7.entities.MetalsAndColorsInfo;
+import com.epam.tc.hw7.tests.utility.Info;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 
@@ -35,29 +34,30 @@ public class MetalAndColorsMainSection extends Section {
         submit.click();
     }
 
-    public void fill(MetalsAndColorsInfo data) {
-        selectVegetables(data.getVegetables());
+    public void fill(Info data) {
         selectSummary(data.getSummary());
         selectElements(data.getElements());
-        selectColors(data.getColors());
+        selectColors(data.getColor());
         selectMetals(data.getMetals());
+        selectVegetables(data.getVegetables());
     }
 
-    private void selectVegetables(String[] vegetable) {
+    private void selectVegetables(List<String> vegetable) {
         vegetables.expand();
         vegetables.select("Vegetables");
-        vegetables.select(vegetable);
-
+        for (String veg : vegetable) {
+            vegetables.select(veg);
+        }
     }
 
-    private void selectSummary(int[] radioToClick) {
+    private void selectSummary(List<String> radioToClick) {
         summary.select(radioToClick);
     }
 
-    private void selectElements(String[] elementsToClick) {
+    private void selectElements(List<String> elementsToClick) {
         for (WebElement element : elements) {
-            for (byte j = 0; j < elementsToClick.length; j++) {
-                if (element.getText().equalsIgnoreCase(elementsToClick[j])) {
+            for (byte j = 0; j < elementsToClick.size(); j++) {
+                if (element.getText().equalsIgnoreCase(elementsToClick.get(j))) {
                     element.click();
                 }
             }
