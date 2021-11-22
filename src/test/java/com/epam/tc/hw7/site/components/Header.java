@@ -7,7 +7,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
 import com.epam.jdi.light.ui.html.elements.common.Text;
-import com.epam.tc.hw7.data.HeaderNavigationButton;
+import com.epam.tc.hw7.enums.HeaderNavigationButtons;
 import com.epam.tc.hw7.site.components.pages.home.LoginForm;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +29,7 @@ public class Header extends Section {
     @Css("#user-name")
     public static Text fullName;
 
-    public void select(HeaderNavigationButton value) {
+    public void select(HeaderNavigationButtons value) {
         headerMenu.select(value.getText());
     }
 

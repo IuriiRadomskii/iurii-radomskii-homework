@@ -1,6 +1,6 @@
-package com.epam.tc.hw7.data;
+package com.epam.tc.hw7.enums;
 
-public enum HeaderNavigationButton {
+public enum HeaderNavigationButtons {
 
     HOME("Home"),
     CONTACT_FORM("Contact form"),
@@ -9,7 +9,7 @@ public enum HeaderNavigationButton {
 
     private final String text;
 
-    private HeaderNavigationButton(String text) {
+    private HeaderNavigationButtons(String text) {
         this.text = text;
     }
 

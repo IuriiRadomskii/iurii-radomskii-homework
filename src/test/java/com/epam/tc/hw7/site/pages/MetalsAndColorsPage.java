@@ -5,7 +5,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.tc.hw7.site.components.pages.metalsandcolors.MetalAndColorsMainSection;
-import com.epam.tc.hw7.tests.utility.Info;
+import com.epam.tc.hw7.data.Info;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;

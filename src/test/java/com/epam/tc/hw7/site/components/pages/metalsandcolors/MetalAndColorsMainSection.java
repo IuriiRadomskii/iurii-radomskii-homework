@@ -7,7 +7,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import com.epam.tc.hw7.tests.utility.Info;
+import com.epam.tc.hw7.data.Info;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 

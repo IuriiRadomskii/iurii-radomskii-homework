@@ -1,7 +1,7 @@
 package com.epam.tc.hw7.site.pages;
 
 import com.epam.jdi.light.elements.composite.WebPage;
-import com.epam.tc.hw7.data.HeaderNavigationButton;
+import com.epam.tc.hw7.enums.HeaderNavigationButtons;
 import com.epam.tc.hw7.site.components.Header;
 
 public class BasePage extends WebPage {
@@ -16,7 +16,7 @@ public class BasePage extends WebPage {
         return header.fullName.getText();
     }
 
-    public void selectInHeader(HeaderNavigationButton value) {
+    public void selectInHeader(HeaderNavigationButtons value) {
         header.select(value);
     }
 

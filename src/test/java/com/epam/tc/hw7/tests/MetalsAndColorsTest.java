@@ -6,9 +6,9 @@ import static com.epam.tc.hw7.site.JdiSite.metalsAndColorsPage;
 import static com.epam.tc.hw7.site.components.Header.loginForm;
 import static com.epam.tc.hw7.site.components.Header.userIcon;
 
-import com.epam.tc.hw7.data.HeaderNavigationButton;
-import com.epam.tc.hw7.tests.utility.JsonParser;
-import com.epam.tc.hw7.tests.utility.Info;
+import com.epam.tc.hw7.enums.HeaderNavigationButtons;
+import com.epam.tc.hw7.data.JsonParser;
+import com.epam.tc.hw7.data.Info;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -33,7 +33,7 @@ public class MetalsAndColorsTest implements TestInit {
 
     @Test(dataProvider = "getTestData")
     public void testMetalsAndColors(Info info) {
-        homePage.selectInHeader(HeaderNavigationButton.METALS_AND_COLORS);
+        homePage.selectInHeader(HeaderNavigationButtons.METALS_AND_COLORS);
         metalsAndColorsPage.shouldBeOpened();
         metalsAndColorsPage.fillData(info);
         metalsAndColorsPage.submit();

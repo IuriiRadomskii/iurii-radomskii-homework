@@ -31,9 +31,7 @@ public class Summary extends Section {
                             .filter(element -> element.getText().equals(number))
                             .findFirst();
             }
-            if (option.isPresent()) {
-                option.get().click();
-            }
+            option.ifPresent(WebElement::click);
         }
         calculateBtn.click();
     }

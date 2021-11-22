@@ -1,4 +1,4 @@
-package com.epam.tc.hw7.tests.utility;
+package com.epam.tc.hw7.data;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
