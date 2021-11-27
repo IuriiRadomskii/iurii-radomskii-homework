@@ -6,9 +6,9 @@ import static com.epam.tc.hw7.site.JdiSite.metalsAndColorsPage;
 import static com.epam.tc.hw7.site.components.Header.loginForm;
 import static com.epam.tc.hw7.site.components.Header.userIcon;
 
-import com.epam.tc.hw7.enums.HeaderNavigationButtons;
-import com.epam.tc.hw7.data.JsonParser;
 import com.epam.tc.hw7.data.Info;
+import com.epam.tc.hw7.data.JsonParser;
+import com.epam.tc.hw7.enums.HeaderNavigationButtons;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

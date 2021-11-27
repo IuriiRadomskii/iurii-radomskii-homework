@@ -1,6 +1,7 @@
 package com.epam.tc.hw7.site.components.pages.metalsandcolors;
 
 
+import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Section;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
@@ -16,6 +17,7 @@ public class MetalAndColorsMainSection extends Section {
 
     public Summary summary;
 
+    //@Css(".vertical-group .checkbox") public List<WebElement> elements;
     @Css(".vertical-group .checkbox") public List<WebElement> elements;
 
     @UI("#submit-button") public Button submit;
@@ -26,7 +28,7 @@ public class MetalAndColorsMainSection extends Section {
     @JDropdown(root = "#metals", value = ".filter-option.pull-left", list = "li", expand = ".caret")
     public Dropdown metals;
 
-    @JDropdown(root = "#vegetables", value = ".filter-option.pull-left",
+    @JDropdown(root = "#vegetables", value = "#salad-dropdown > button",
                expand = ".caret", list = "label")
     public Dropdown vegetables;
 
@@ -44,7 +46,7 @@ public class MetalAndColorsMainSection extends Section {
 
     private void selectVegetables(List<String> vegetable) {
         vegetables.expand();
-        vegetables.select("Vegetables");
+        vegetables.select(vegetables.selected());
         for (String veg : vegetable) {
             vegetables.select(veg);
         }
@@ -62,6 +64,10 @@ public class MetalAndColorsMainSection extends Section {
                 }
             }
         }
+    }
+
+    private void selectElements() {
+
     }
 
     private void selectColors(String color) {

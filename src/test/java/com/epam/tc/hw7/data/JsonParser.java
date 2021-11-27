@@ -45,7 +45,3 @@ public class JsonParser {
     String strNode = node.toString();
     Info info = mapper.readValue(strNode, Info.class);
     System.out.println(info);*/
-
-
-
-
