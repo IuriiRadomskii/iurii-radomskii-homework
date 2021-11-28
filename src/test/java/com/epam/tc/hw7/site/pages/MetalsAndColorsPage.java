@@ -4,7 +4,7 @@ import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
-import com.epam.tc.hw7.site.components.pages.metalsandcolors.MetalAndColorsMainSection;
+import com.epam.tc.hw7.site.components.pages.metalsandcolors.MetalAndColorForm;
 import com.epam.tc.hw7.data.Info;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,14 +14,14 @@ import org.openqa.selenium.WebElement;
 @Title("Metal and Colors")
 public class MetalsAndColorsPage extends BasePage {
 
-    public static MetalAndColorsMainSection metalAndColorsMainSection;
+    public static MetalAndColorForm metalAndColorForm;
 
     public void fillData(Info data) {
-        metalAndColorsMainSection.fill(data);
+        metalAndColorForm.fill(data);
     }
 
     public void submit() {
-        metalAndColorsMainSection.submit();
+        metalAndColorForm.submit();
     }
 
     @Css("ul.panel-body-list.results li")

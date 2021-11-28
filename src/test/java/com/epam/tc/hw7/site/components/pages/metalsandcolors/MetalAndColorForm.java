@@ -1,9 +1,9 @@
 package com.epam.tc.hw7.site.components.pages.metalsandcolors;
 
 
-import com.epam.jdi.light.elements.complex.Checklist;
+
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
-import com.epam.jdi.light.elements.composite.Section;
+import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
@@ -13,7 +13,7 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 
 @Css(".form")
-public class MetalAndColorsMainSection extends Section {
+public class MetalAndColorForm extends Form<Info> {
 
     public Summary summary;
 
@@ -36,6 +36,7 @@ public class MetalAndColorsMainSection extends Section {
         submit.click();
     }
 
+    @Override
     public void fill(Info data) {
         selectSummary(data.getSummary());
         selectElements(data.getElements());

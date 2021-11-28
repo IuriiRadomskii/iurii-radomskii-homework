@@ -18,6 +18,9 @@ public class Summary extends Section {
     @FindBy(id = "calculate-button")
     private Button calculateBtn;
 
+    public Summary() {
+    }
+
     public void select(List<String> toSelect) {
         for (String number : toSelect) {
             int intNumber = Integer.parseInt(number);
