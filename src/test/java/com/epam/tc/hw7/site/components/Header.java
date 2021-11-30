@@ -14,7 +14,6 @@ import org.openqa.selenium.WebElement;
 @FindBy(className = "uui-header dark-gray")
 public class Header extends Section {
 
-
     public static LoginForm loginForm;
 
     @UI("ul.uui-navigation.nav.navbar-nav.m-l8 li a")

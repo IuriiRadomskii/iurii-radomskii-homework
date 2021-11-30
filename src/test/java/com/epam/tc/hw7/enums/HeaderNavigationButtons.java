@@ -9,7 +9,7 @@ public enum HeaderNavigationButtons {
 
     private final String text;
 
-    private HeaderNavigationButtons(String text) {
+    HeaderNavigationButtons(String text) {
         this.text = text;
     }
 

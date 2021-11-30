@@ -38,6 +38,4 @@ public class Summary extends Section {
         }
         calculateBtn.click();
     }
-
-
 }

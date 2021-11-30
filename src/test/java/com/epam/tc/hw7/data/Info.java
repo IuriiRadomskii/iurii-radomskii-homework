@@ -14,20 +14,11 @@ public class Info extends DataClass<Info> {
     public static final Info TEST_DATA = new Info(summaryData,
         elementsData, colorData, metalsData, vegetablesData);
 
-    public static final String LOG_TEMPLATE = "Summary: sum(data[%s].summary)\n"
-                                            + "Elements: data[%s].elements\n"
-                                            + "Color: data[%s].color\n"
-                                            + "Metal: data[%s].metal\n"
-                                            + "Vegetables: data[%s].vegetables";
-
     public List<String> summary;
     public List<String> elements;
     public String color;
     public String metals;
     public List<String> vegetables;
-
-    public Info() {
-    }
 
     public Info(List<String> summary, List<String> elements, String colors,
                 String metals, List<String> vegetables) {

@@ -41,7 +41,3 @@ public class JsonParser {
         return testData;
     }
 }
-    /*JsonNode node = mapper.readTree(json).get("data_1");
-    String strNode = node.toString();
-    Info info = mapper.readValue(strNode, Info.class);
-    System.out.println(info);*/

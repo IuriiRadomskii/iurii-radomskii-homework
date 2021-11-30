@@ -17,7 +17,6 @@ public class MetalAndColorForm extends Form<Info> {
 
     public Summary summary;
 
-    //@Css(".vertical-group .checkbox") public List<WebElement> elements;
     @Css(".vertical-group .checkbox") public List<WebElement> elements;
 
     @UI("#submit-button") public Button submit;
@@ -59,16 +58,12 @@ public class MetalAndColorForm extends Form<Info> {
 
     private void selectElements(List<String> elementsToClick) {
         for (WebElement element : elements) {
-            for (byte j = 0; j < elementsToClick.size(); j++) {
-                if (element.getText().equalsIgnoreCase(elementsToClick.get(j))) {
+            for (String s : elementsToClick) {
+                if (element.getText().equalsIgnoreCase(s)) {
                     element.click();
                 }
             }
         }
-    }
-
-    private void selectElements() {
-
     }
 
     private void selectColors(String color) {
