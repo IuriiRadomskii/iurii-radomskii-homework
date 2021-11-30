@@ -6,19 +6,11 @@ import java.util.List;
 
 public class Info extends DataClass<Info> {
 
-    private static final List<String> summaryData = List.of("4", "3");
-    private static final List<String> elementsData = List.of("Water", "Fire");
-    private static final String colorData = "Red";
-    private static final String metalsData = "Gold";
-    private static final List<String> vegetablesData = List.of("Cucumber", "Onion");
-    public static final Info TEST_DATA = new Info(summaryData,
-        elementsData, colorData, metalsData, vegetablesData);
-
-    public List<String> summary;
-    public List<String> elements;
-    public String color;
-    public String metals;
-    public List<String> vegetables;
+    private List<String> summary;
+    private List<String> elements;
+    private String color;
+    private String metals;
+    private List<String> vegetables;
 
     public Info(List<String> summary, List<String> elements, String colors,
                 String metals, List<String> vegetables) {

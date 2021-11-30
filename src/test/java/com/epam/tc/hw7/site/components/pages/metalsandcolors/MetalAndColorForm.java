@@ -55,13 +55,10 @@ public class MetalAndColorForm extends Form<Info> {
     }
 
     private void selectElements(List<String> elementsToClick) {
-        for (WebElement element : elements) {
-            for (String s : elementsToClick) {
-                if (element.getText().equalsIgnoreCase(s)) {
-                    element.click();
-                }
-            }
-        }
+        elements.forEach(element -> elementsToClick
+            .stream()
+            .filter(s -> element.getText().equalsIgnoreCase(s))
+            .forEachOrdered(s -> element.click()));
     }
 
     private void selectColors(String color) {
