@@ -28,6 +28,11 @@
 
         <cucumber-testng.version>7.0.0</cucumber-testng.version>
         <cucumber-java.version>7.0.0</cucumber-java.version>
+
+        <driver>chrome</driver>
+        <domain>https://jdi-testing.github.io/jdi-light/</domain>
+
+        <jackson.version>2.12.4</jackson.version>
     </properties>
 
     <profiles>
@@ -159,6 +164,19 @@
             <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency><!-- cucumber-java -->
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>RELEASE</version>
+        </dependency><!--JDI-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency><!--jackson-->
+
+
     </dependencies>
 
     <build>
@@ -186,6 +204,15 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
     <reporting>
