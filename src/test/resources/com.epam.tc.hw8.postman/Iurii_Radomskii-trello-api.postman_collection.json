@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c04984d8-0ec7-41e8-b65f-857cd7bf7c70",
+		"_postman_id": "14e9ef75-1db3-4414-a1b2-caaa3e11ff2f",
 		"name": "Iurii_Radomskii-trello-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,28 +25,28 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Assert status\", () => {\r",
+							"pm.test(\"Assert status code is 200 OK\", () => {\r",
 							"    pm.response.to.be.ok;\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response content type\", () => {\r",
+							"pm.test(\"Assert that response content type is json and charset is utf-8\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response format\", () => {\r",
+							"pm.test(\"Assert that response has json body\", () => {\r",
 							"    pm.response.to.be.success;\r",
 							"    pm.response.to.be.withBody;\r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response encoding\", () => {\r",
+							"pm.test(\"Assert that response encoding is gzip\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Encoding\");\r",
 							"    pm.response.to.be.header(\"Content-Encoding\", \"gzip\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert that json have name\", () => {\r",
+							"pm.test(\"Assert that json have field name\", () => {\r",
 							"    pm.response.to.have.jsonBody(\"name\");\r",
 							"});\r",
 							"\r",
@@ -116,23 +116,23 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Assert status\", () => {\r",
+							"pm.test(\"Assert status code is 200 OK\", () => {\r",
 							"    pm.response.to.be.ok;\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response content type\", () => {\r",
+							"pm.test(\"Assert that response content type is json and charset is utf-8\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response format\", () => {\r",
+							"pm.test(\"Assert that response has json body\", () => {\r",
 							"    pm.response.to.be.success;\r",
 							"    pm.response.to.be.withBody;\r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response encoding\", () => {\r",
+							"pm.test(\"Assert that response encoding is gzip\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Encoding\");\r",
 							"    pm.response.to.be.header(\"Content-Encoding\", \"gzip\");\r",
 							"});\r",
@@ -149,7 +149,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{baseURI}}/1/boards/{{boardID}}?name={{newBoardName}}&key={{apiKey}}&token={{apiToken}}&prefs/background=lime&defaultLists=false",
+					"raw": "{{baseURI}}/1/boards/{{boardID}}?name={{newBoardName}}&key={{apiKey}}&token={{apiToken}}&prefs/background={{newBoardColor}}&defaultLists=false",
 					"host": [
 						"{{baseURI}}"
 					],
@@ -173,7 +173,7 @@
 						},
 						{
 							"key": "prefs/background",
-							"value": "lime"
+							"value": "{{newBoardColor}}"
 						},
 						{
 							"key": "defaultLists",
@@ -191,23 +191,23 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Assert status\", () => {\r",
+							"pm.test(\"Assert status code is 200 OK\", () => {\r",
 							"    pm.response.to.be.ok;\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response content type\", () => {\r",
+							"pm.test(\"Assert that response content type is json and charset is utf-8\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response format\", () => {\r",
+							"pm.test(\"Assert that response has json body\", () => {\r",
 							"    pm.response.to.be.success;\r",
 							"    pm.response.to.be.withBody;\r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response encoding\", () => {\r",
+							"pm.test(\"Assert that response encoding is gzip\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Encoding\");\r",
 							"    pm.response.to.be.header(\"Content-Encoding\", \"gzip\");\r",
 							"});\r",
@@ -261,32 +261,32 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Assert status\", () => {\r",
+							"pm.test(\"Assert status code is 200 OK\", () => {\r",
 							"    pm.response.to.be.ok;\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response content type\", () => {\r",
+							"pm.test(\"Assert that response content type is json and charset is utf-8\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response format\", () => {\r",
+							"pm.test(\"Assert that response has json body\", () => {\r",
 							"    pm.response.to.be.success;\r",
 							"    pm.response.to.be.withBody;\r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response encoding\", () => {\r",
+							"pm.test(\"Assert that response encoding is gzip\", () => {\r",
 							"    pm.response.to.have.header(\"Content-Encoding\");\r",
 							"    pm.response.to.be.header(\"Content-Encoding\", \"gzip\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert json field '_value'\", () => {\r",
+							"pm.test(\"Assert that json contains field '_value'\", () => {\r",
 							"    pm.response.to.have.jsonBody(\"_value\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert json field '_value'\", () => {\r",
+							"pm.test(\"Assert json field '_value' is null\", () => {\r",
 							"    pm.expect(pm.response.json()._value).to.eql(null);\r",
 							"});\r",
 							"\r",
@@ -338,9 +338,18 @@
 							"    pm.response.to.be.notFound;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Assert response text\", () => {\r",
+							"pm.test(\"Assert 'The requested resource was not found.' message\", () => {\r",
 							"    pm.expect(pm.response.text()).contain(\"The requested resource was not found.\");\r",
 							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -350,14 +359,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURI}}/1/boards/:id?key={{apiKey}}&token={{apiToken}}",
+					"raw": "{{baseURI}}/1/boards/{{boardID}}?key={{apiKey}}&token={{apiToken}}",
 					"host": [
 						"{{baseURI}}"
 					],
 					"path": [
 						"1",
 						"boards",
-						":id"
+						"{{boardID}}"
 					],
 					"query": [
 						{
@@ -367,12 +376,6 @@
 						{
 							"key": "token",
 							"value": "{{apiToken}}"
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "{{boardID}}"
 						}
 					]
 				}
